@@ -4,6 +4,10 @@
   <div class="bill" ng-repeat="bill in BillsCtrl.bills">
     <a class="billhover" ui-sref="bills.detail({id: bill.id})">
       <span ng-bind="bill.attributes.title"></span>
+      <a class="btn btn-default" target="_blank"
+      	ng-href="{{bill.voteYesLink}}">Vote #yes</a>
+      <a class="btn btn-default" target="_blank"
+      ng-href="{{bill.voteNoLink}}">Vote #no</a>
     </a>
   </div>
     <button type="button" class="btn btn-primary">LOAD MORE</button>
