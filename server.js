@@ -9,8 +9,7 @@ try {
 }
 
 var express = require('express');
-var request = require('request');
-var TwitterService = require('./TwitterService');
+var Twitter = require('twitter');
 
 var app = express();
 
@@ -33,48 +32,23 @@ app.get('/health', function (req, res) {
 /** health check route */
 app.get('/1.1/*', function (req, res) {
 
-  var options = {
-    url: 'https://api.twitter.com/1.1/' + req.params[0],
-    headers: {
-      'Authorization': 'Bearer 23995804-7niWvZc1CbruQwUSv0CDbT6zlOlvMEvUQpCdl2TU2'
-    },
-    qs: req.query
-  };
-
-  //console.log('req', req);
-  //console.log('options.url', options.url);
-  //console.log('req.baseUrl', req.baseUrl);
-  //console.log('req.params', req.params);
-  //console.log('req.query', req.query);
-
-  request(options, function (e, r, body) {
-    //console.log('e', e);
-    //console.log('r', r);
-    //console.log('body', body);
-    res.status(r.statusCode).send(body);
+  var client = new Twitter({
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.TWITTER_ACCESS_TOKEN,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
 
+  var params = req.query;
+  params.count = true;
 
-  // Get OAuth Object, we need to pass in the authorize redirect for later
-  //TwitterService.initTwitterOauth('http://localhost:8080/health')
-  //  .then(function (oa) {
-  //    console.log('oa', oa);
-  //    var authorizeUrl = "https://twitter.com/oauth/authorize?oauth_token="; // add this back after testing - force_login=true&
-  //
-  //    // Need to grab app access tokens for the authorize redirect
-  //    TwitterService.getOAuthRequestToken(oa).then(function (tokens) {
-  //      // This will actually send the user to twitter to authorize
-  //      res.send(tokens);
-  //      //res.redirect(authorizeUrl + tokens.oauthToken);
-  //    }).catch(function (err) {
-  //      res.status(500);
-  //      res.json(err);
-  //    });
-  //  }).catch(function (err) {
-  //  console.log('err', err);
-  //  res.status(500);
-  //  res.json(err);
-  //});
+  client.get(req.params[0], params, function(error, tweets, response){
+    if (!error) {
+      console.log(tweets);
+    }
+    res.status(response.statusCode).send(tweets);
+  });
+
 });
 
 var port = process.env.PORT || 8080;
