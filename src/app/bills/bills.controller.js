@@ -5,7 +5,7 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc) {
+  function BillsCtrl(BillsSvc, $timeout) {
 
     var vm = this;
 
@@ -36,6 +36,15 @@
         // console.log(bill.voteYesLink);
       })
     }
+
+    vm.getNextPage = function() {
+      BillsSvc.getNext(vm.links.next)
+        .then(function(d) {
+          $timeout(function() {
+            vm.bills = [].concat(vm.bills, d.data.data);
+          });
+        })
+    };
 
     vm.init = function () {
       console.log('BillsCtrl init');
