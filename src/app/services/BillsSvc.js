@@ -1,5 +1,5 @@
 angular.module('flvote')
-.service('BillsService', function($http) {
+.service('BillsSvc', function($http) {
 
     var BASE_CONFIG = {
         headers: {
@@ -20,7 +20,7 @@ angular.module('flvote')
     };
 
     this.fetchBillsWithCustomParams = function(params) {
-        var requestConfig = angular.merge({}, params, BASE_CONFIG);
+        var requestConfig = angular.merge({}, {params: params}, BASE_CONFIG);
         return $http(requestConfig);
     };
 });
