@@ -5,9 +5,9 @@
     <a class="billhover" ui-sref="bills.detail({id: bill.id})">
       <span ng-bind="bill.attributes.title"></span>
       <a class="btn btn-success vote" target="_blank"
-      	ng-href="{{bill.voteYesLink}}">Vote #yes</a>
+      	ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes</a>
       <a class="btn btn-danger vote" target="_blank"
-      ng-href="{{bill.voteNoLink}}">Vote #no</a>
+         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span> Vote #no</a>
     </a>
   </div>
     <button type="button" class="btn btn-primary" ng-click="BillsCtrl.getNextPage()">LOAD MORE</button>

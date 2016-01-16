@@ -35,7 +35,7 @@
         return $http(requestConfig);
       };
 
-      this.getNext = function(url) {
+      this.fetchNext = function(url) {
         var requestConfig = angular.merge({}, BASE_CONFIG, {url: url});
         return $http(requestConfig);
       }

@@ -58,3 +58,15 @@ a {
     
 }
 
+.glyphicon {
+        margin-right: 10px;
+}
+
+
+
+@media (max-width: 990px) {
+  a {
+    clear: left;
+    display: block;
+  }
+}
