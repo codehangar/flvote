@@ -10,6 +10,8 @@ try {
 
 var express = require('express');
 var Twitter = require('twitter');
+var Apicache = require('apicache');
+var cache = Apicache.middleware;
 
 var app = express();
 
@@ -30,7 +32,7 @@ app.get('/health', function (req, res) {
 });
 
 /** health check route */
-app.get('/1.1/*', function (req, res) {
+app.get('/1.1/*', cache('3 minutes'), function (req, res) {
 
   var client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -42,10 +44,7 @@ app.get('/1.1/*', function (req, res) {
   var params = req.query;
   params.count = true;
 
-  client.get(req.params[0], params, function(error, tweets, response){
-    if (!error) {
-      console.log(tweets);
-    }
+  client.get(req.params[0], params, function (error, tweets, response) {
     res.status(response.statusCode).send(tweets);
   });
 

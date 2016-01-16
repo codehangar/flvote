@@ -24,6 +24,12 @@ h2 {
     padding: 15px;
 }
 
+.billname {
+    text-overflow: ellipsis;
+    
+}
+
+
 .billhover:hover {
  background-color: #f9f9f9;
  padding: 10px;
@@ -65,6 +71,12 @@ a {
     
 }
 
+.loadmore {
+    margin-left: 2%;
+    margin-top: 2%;
+    
+}
+
 .glyphicon {
   margin-right: 10px;
 }
@@ -74,10 +86,27 @@ a {
 }
 
 
-@media (max-width: 990px) {
-  a {
-    clear: left;
-    display: block;
-  }
-    
+.bill-left {
+    width: 50%;
+    text-overflow: ellipsis;
 }
+
+@media (max-width: 990px) {
+    .bill-left {
+        width: 100%;
+    }
+    
+    .bill-right {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        float: left;
+    
+    }
+        
+}
+
+    ol, li {
+        font-size: 1.75rem;
+        
+    }

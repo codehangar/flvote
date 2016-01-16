@@ -2,18 +2,34 @@
         <h1>Recent Bills</h1>
     
   <div class="bill" ng-repeat="bill in BillsCtrl.bills">
-    <a ui-sref="bills.detail({id: bill.id})">  
-        <span class="billhover" ng-bind="bill.attributes.title"></span></a>
+      
+    <div class="bill-left">
+      
+        <a ui-sref="bills.detail({id: bill.billId})">
+        <span class="billhover billname" ng-bind="bill.attributes.title">
+        </a>
+             </div>
         
-        <a class="btn btn-danger vote" target="_blank"
-         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span> Vote #no</a>
+        <div class="bill-right">
+              <a class="btn btn-danger vote" target="_blank"
+         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{bill.twitterVotes.no}}</strong></a>
         
       <a class="btn btn-success vote" target="_blank"
-      	ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span> Vote #yes</a>
+        ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{bill.twitterVotes.yes}}</strong></a>
+    </a>
+            </div>
       
-  
+      </div>
+        
+        </div>
+        
+     
+
+<button type="button" class="btn btn-primary loadmore" ng-click="BillsCtrl.getNextPage()">LOAD MORE</button>
   </div>
-    <button type="button" class="btn btn-primary loadmore" ng-click="BillsCtrl.getNextPage()">LOAD MORE</button>
+    
+
+
     
     
     
@@ -34,7 +50,7 @@
     
     <hr>
     
-    <div class="footer">
+    <div class="footer container">
        <p>Thanks to <a href="http://tabsontallahassee.com"> Tabs on Tallahassee</a> for providing tools to get the latest Florida Legislature info.</p> 
     
     </div>
