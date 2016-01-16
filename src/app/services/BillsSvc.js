@@ -24,9 +24,15 @@
         return $http(requestConfig);
       };
 
-      this.fetchBillsThisSession = function (params) {
+      this.fetchBillsCustomParams = function (params) {
         var requestConfig = angular.merge({}, {params: params}, BASE_CONFIG);
         return $http(requestConfig)
       };
+
+      this.fetchBillByID = function(id) {
+        id = id.replace('_','/');
+        var requestConfig = angular.merge({}, BASE_CONFIG, {url: 'https://www.tabsontallahassee.com/api/' + id});
+        return $http(requestConfig);
+      }
     });
 })();
