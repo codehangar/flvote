@@ -9,10 +9,6 @@
 
     var vm = this;
 
-    function parseData(d) {
-
-    }
-
     vm.fetchBills = function () {
       BillsSvc.fetchBillsThisSession().then(function(d) {
         vm.allBills = d.data.data;
@@ -72,10 +68,6 @@
     vm.init = function () {
       console.log('BillsCtrl init');
       vm.fetchBills();
-      var proms = TwitterSvc.getVotesForSpecificBill('HB409')
-      proms.then(function(x){
-        console.log(x)
-      })
     };
 
     vm.init();
