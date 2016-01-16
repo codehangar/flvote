@@ -1,8 +1,8 @@
 <div class="container">
     <h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
 
-	<a class="btn btn-danger vote" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{bill.twitterVotes.no}}</strong></a>
-        <a class="btn btn-success vote" target="_blank" ng-href="{{BillCtrl.bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{bill.twitterVotes.yes}}</strong></a>
+	<a class="btn btn-danger vote" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{BillCtrl.bill.twitterVotes.no}}</strong></a>
+        <a class="btn btn-success vote" target="_blank" ng-href="{{BillCtrl.bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{BillCtrl.bill.twitterVotes.yes}}</strong></a>
 
     <p><strong>Subjects:</strong> <span ng-repeat="subject in BillCtrl.bill.attributes.subject" style="margin:5px">{{subject}}</span></p>
     <p><strong>Learn More (Documents):</strong></p>
