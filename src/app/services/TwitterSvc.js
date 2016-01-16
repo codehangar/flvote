@@ -7,7 +7,7 @@
         headers: {
           "Content-Type": 'application/json'
         },
-        url: "http://www.flvote.org/api"
+        url: "http://flvote.herokuapp.com/1.1/search/tweets.json"
       };
 
       this.getTweetsTaggedFLVOTE = function() {
@@ -30,13 +30,21 @@
         var noRequest = angular.merge({}, {params: noParams}, BASE_CONFIG);
 
         var yesProm = $q(function(resolve, reject) {
-          $http(yesRequest).then(resolve);
+          $http(yesRequest).then(function(x) {
+            resolve(x.data.statuses.length)
+          });
         });
         var noProm = $q(function(resolve, reject) {
-          $http(noRequest).then(resolve);
+          $http(noRequest).then(function(x) {
+            resolve(x.data.statuses.length)
+          });
         });
 
-        return $q.all([yesProm, noProm]);
+        return $q(function(resolve, reject) {
+          $q.all([yesProm, noProm]).then(function(proms) {
+            resolve({yes: proms[0], no: proms[1]})
+          })
+        });
       }
     })
 })();
