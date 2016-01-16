@@ -9,13 +9,11 @@
 
     var vm = this;
 
-    BillsSvc.fetchBillsThisSession().then(function(d) {
-      console.log(d);
-    })
-
     vm.fetchBills = function () {
       BillsSvc.fetchBillsThisSession().then(function(d) {
         vm.bills = d.data.data;
+        vm.meta = d.data.meta;
+        vm.links = d.data.links;
       })
     };
 
