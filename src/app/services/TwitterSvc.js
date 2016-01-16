@@ -2,7 +2,7 @@
   "use strict";
   angular
     .module('flvote')
-    .service('TwitterSvc', function($http) {
+    .service('TwitterSvc', function($http, $q) {
       var BASE_CONFIG = {
         headers: {
           "Content-Type": 'application/json'
@@ -18,22 +18,25 @@
         return $http(requestConfig);
       };
 
-      this.getVotesForSpecificBill = function(billIdentifier, cb) {
+      this.getVotesForSpecificBill = function(billIdentifier) {
         var yesParams = {
-          q: '#flvote+AND+#'+billIdentifier+'+AND+#yes'
+          q: '#flvote #'+billIdentifier+' #yes'
         };
         var noParams = {
-          q: '#flvote+AND+#'+billIdentifier+'+AND+#no'
+          q: '#flvote #'+billIdentifier+' #no'
         };
+
         var yesRequest = angular.merge({}, {params: yesParams}, BASE_CONFIG);
         var noRequest = angular.merge({}, {params: noParams}, BASE_CONFIG);
-        $http(yesRequest)
-          .then(function(yes) {
-            $http(noRequest)
-              .then(function(no) {
-                return cb({yes: yes, no: no});
-              })
-          })
+
+        var yesProm = $q(function(resolve, reject) {
+          $http(yesRequest).then(resolve);
+        });
+        var noProm = $q(function(resolve, reject) {
+          $http(noRequest).then(resolve);
+        });
+
+        return $q.all([yesProm, noProm]);
       }
     })
 })();
