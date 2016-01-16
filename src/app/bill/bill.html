@@ -1,3 +1,21 @@
-<h2>bill.html</h2>
+<h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
+<p><strong>Subjects:</strong> <span ng-repeat="subject in BillCtrl.bill.attributes.subject" style="margin:5px">{{subject}}</span></p>
 
-<a ng-href="https://twitter.com/home?status=I%20support%20%23{{BillCtrl.hashtagBill}}%20Show%20your%20support,%20vote%20%23{{BillCtrl.hashtagYes}}%20at%20{{BillCtrl.billLink}}%20%23flvote%20%23tabsontally%20%40CodeForOrlando%20%40tabsontally">https://twitter.com/home?status=I%20support%20%23{{BillCtrl.hashtagBill}}%20Show%20your%20support,%20vote%20%23{{BillCtrl.hashtagYes}}%20at%20{{BillCtrl.billLink}}%20%23tabsontally%20%40CodeForOrlando%20%40tabsontally</a>
+<p><strong>Learn More (Documents):</strong></p>
+<div ng-repeat="doc in BillCtrl.bill.attributes.documents" style="margin:5px;">
+	{{doc.note}}
+	<div ng-repeat="link in doc.links" style="margin-left:10px;">
+		<a ng-href="link.url" >{{link.url}}</a>
+	</div>
+	
+</div>
+
+<p><strong>Vote!:</strong></p>
+<div>
+      <a class="btn btn-default" target="_blank"
+      	ng-href="{{BillCtrl.bill.voteYesLink}}">Vote #yes ({{yesVotes}})</a>
+      <a class="btn btn-default" target="_blank"
+      ng-href="{{BillCtrl.bill.voteNoLink}}">Vote #no ({{noVotes}})</a>
+</div>
+
+<!--  -->

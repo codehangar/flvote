@@ -35,3 +35,6 @@ node_modules
 
 # Webstorm Settings
 .idea/workspace.xml
+
+# ENV Settings
+.env
