@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- '0.12'
+before_script:
+- npm install -g gulp
+- gulp build
+deploy:
+  provider: s3
+  access_key_id:
+    secure: Zqy1J1r6lfb6EhgbOzK3kT3j3nZFp7FBmMngtkqRApF0M4nHT9TTvTBAT4RsIE81bZmg/ROwiSM7bMHajsNUIO7aDCh58siXlGjGrZGL4cUdA1V5bWfUQlc0dB40DhTZntDTGgFEqG3+1PfYR9NnwzZqz+5zdNU/2UvUUh+OMFhbdXfJe3DrWlOw7LLGA9GfQICJllZ52oA4NhHxwaqqbdScOgNsEXdaDWKlD6a2lmve1kyengFV+NFTgCwmmADbSsfFT/FpTf3uKcW6CZH04Lrn2x4WqxAHfXlH6z0GWg3DQYfs5gNzgDfGMeRKkxUoF+vIzjUK1hwPI9sde6CI029nrxgUvZJX3jy2OOR1/9zD+1xUULCX7xVtEi+UnVWQHPRIYhi5+LbzMQcJkJTY4rYIy7CIs4RDR6Dq3jHY+YmbEv3UVyYhtdaV7Pp7hmu6A3ojLb+swBtrEtzY2OMEKu7Y6bMjbabxkZfLxFMgDUdFRrqOwAjzeZYUMj9dGwLXTrF+R9lBNPbQKyuCcEVcpqLXu2YhfTdjv6gJnIsmHhpN6tRhlQuyJNzDaiIxSxvo+XSqOrVJ4BWhnlw9oipA+VYaTPjn+QIXFS3kkuWKDzMYvunjsLXWiuzB0BrP+/Hqmv280DWgDKbidURmezE6KftmpMUROeHgEbsXQ3v1/Uw=
+  secret_access_key:
+    secure: FfNrg65DTE39hR0GImQwnZ/HvD7xtZ64uc/geImcwz5Mukhdd/RykS1DUvlIC4J1/Ed4s+4jQZguS0FRJ3L8mDXZQJfhlW1X11WwBNkxMVugWYnlnhK7UY+PZhvlYuz4Sl20vfjcN0gFMeXKfqmu15Ta1wwX7nPRAqS13Awtt/ns31FzG9hXk7bPx3rAQ3E1DIiKmcP7ioUTtie74V0pWaabYPS2waYxBb41POVvZZHnyTExCNaydQHTGOS46+uhfvfah5i7q/jk09ub01WJhYYjMHIJdolV2XkKJ+xQHbU81SOW0thiSIY2eb5rilFVCzIx46bOWzHBi17GAQT7WVVPPD7lZ/AK1dt+EFEPHCZJdJOudSzNrOgOW6O5YYjSB9zSVLc3XX3l93jeBX0e/uleWEvsmFUp8DIi3liNcordGVv2ddcG2vp/tCnT/YGQjTHFk0NSp5xqwVBYGOT3EowJzm37ytiu+HElLrZ1k3mZfPS+Gf7+9wvQRa/eOOScHHFPIwwN2tAr9gybyIX+9mHOu791RGXYkxGF/zXIXi///0CobCFj3Ph/we5+sKQ8u6Xu9nPUiJeMe/4jgsrsqmqjsZhkt38t2vAKF+/SpxYJ8EdH1D4k2u2PpBAGiiHan+TEAFVbKIbG2Sbzd8hMjn6Jeq9G/twEPB+OIn1Jdsg=
+  bucket: flvote
+  local-dir: src
+  acl: public_read
+  on:
+    repo: codehangar/flvote
+    branch: master
