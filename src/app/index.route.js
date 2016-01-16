@@ -7,7 +7,7 @@
 
   function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/errors/404/');
+    // $urlRouterProvider.otherwise('/errors/404/');
 
     $stateProvider
       .state('bills', {

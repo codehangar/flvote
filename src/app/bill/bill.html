@@ -1,21 +1,28 @@
-<h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
-<p><strong>Subjects:</strong> <span ng-repeat="subject in BillCtrl.bill.attributes.subject" style="margin:5px">{{subject}}</span></p>
+<div class="container">
+    <h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
 
-<p><strong>Learn More (Documents):</strong></p>
-<div ng-repeat="doc in BillCtrl.bill.attributes.documents" style="margin:5px;">
-	{{doc.note}}
-	<div ng-repeat="link in doc.links" style="margin-left:10px;">
-		<a ng-href="{{link.url}}" target="_blank">{{link.url}}</a>
-	</div>
-	
-</div>
+	<a class="btn btn-danger vote" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{bill.twitterVotes.no}}</strong></a>
+        <a class="btn btn-success vote" target="_blank" ng-href="{{BillCtrl.bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{bill.twitterVotes.yes}}</strong></a>
 
-<p><strong>Vote!:</strong></p>
-<div>
-      <a class="btn btn-default" target="_blank"
+    <p><strong>Subjects:</strong> <span ng-repeat="subject in BillCtrl.bill.attributes.subject" style="margin:5px">{{subject}}</span></p>
+    <p><strong>Learn More (Documents):</strong></p>
+    <div ng-repeat="doc in BillCtrl.bill.attributes.documents" style="margin:5px;">
+        {{doc.note}}
+        <div ng-repeat="link in doc.links" style="margin-left:10px;">
+            <a ng-href="{{link.url}}" target="_blank">{{link.url}}</a>
+        </div>
+    </div>
+    <p><strong>Vote!:</strong></p>
+    <div>
+        <!-- <a class="btn btn-default" target="_blank"
       	ng-href="{{BillCtrl.bill.voteYesLink}}">Vote #yes ({{yesVotes}})</a>
       <a class="btn btn-default" target="_blank"
-      ng-href="{{BillCtrl.bill.voteNoLink}}">Vote #no ({{noVotes}})</a>
+      ng-href="{{BillCtrl.bill.voteNoLink}}">Vote #no ({{noVotes}})</a> -->
+        
+    </div>
+    <hr>
+<div class="footer">
+    <p>Thanks to <a href="http://tabsontallahassee.com"> Tabs on Tallahassee</a> for providing tools to get the latest Florida Legislature info.</p>
+</div>
 </div>
 
-<!--  -->

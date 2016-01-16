@@ -25,7 +25,7 @@
         var identifier = bill.attributes.identifier;
         identifier = identifier.replace(/\s/g, '');
         var billId = bill.id.replace(/\//g, "_");
-        var billLink = "http://www.flvote.org/"+billId
+        var billLink = "http://www.flvote.org/#/"+billId
         bill.billId = billId;
         billLink = encodeURIComponent(billLink);
         var proms = TwitterSvc.getVotesForSpecificBill(identifier);
