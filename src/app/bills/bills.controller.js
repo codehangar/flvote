@@ -50,11 +50,13 @@
       });
       if (idx !== vm.allBills.length - 1) {
         vm.bills = vm.allBills.slice(0, idx + 10);
+        generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
       } else {
         BillsSvc.fetchNext(vm.links.next)
           .then(function(d) {
             vm.allBills = [].concat(vm.allBills, d.data.data);
             vm.bills = vm.allBills.slice(0, idx + 10);
+            generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
           })
       }
 
