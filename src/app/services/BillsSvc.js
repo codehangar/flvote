@@ -23,7 +23,7 @@
         }
       };
       var requestConfig = angular.merge({}, params, BASE_CONFIG);
-      return $https(requestConfig);
+      return $http(requestConfig);
     };
 
     this.fetchBillsThisSession = function (params) {
