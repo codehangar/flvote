@@ -24,9 +24,16 @@ h2 {
     padding: 15px;
 }
 
+.billhover:hover {
+ background-color: #f9f9f9;
+ padding: 10px;
+ text-decoration: none;  
+}
+
 a { 
 
     font-size: 2rem;
+    text-decoration: none !important;
    
 }
 
@@ -59,9 +66,12 @@ a {
 }
 
 .glyphicon {
-        margin-right: 10px;
+  margin-right: 10px;
 }
 
+.loadmore {
+   margin-top: 2%; 
+}
 
 
 @media (max-width: 990px) {
@@ -69,4 +79,5 @@ a {
     clear: left;
     display: block;
   }
+    
 }
