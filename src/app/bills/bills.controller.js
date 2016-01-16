@@ -5,9 +5,10 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl() {
+  function BillsCtrl(BillsSvc) {
 
     var vm = this;
+    console.log(BillsSvc.fetchBillsThisSession);
 
     vm.fetchBills = function () {
       vm.bills = [{
