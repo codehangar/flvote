@@ -3,18 +3,21 @@
 }
 
 
-.logo {
-
-    width: 50%;
-    
-}
-
 p {
-    font-size: 1.5em;
+    font-size: 1.25em;
 }
 
-.btn {
-    margin-top: 2%;
+h1 { 
+   color: #009FDA;  
+}
+
+h2 {
+    color: darkgray;
+
+}
+
+.vote {
+    margin-left: 1%;
 }
 
 .bill {
@@ -24,11 +27,27 @@ p {
 a { 
 
     font-size: 2rem;
-    padding: 15px;
+   
 }
 
-a:hover {
-    background-color: lightslategray;
+.logo {
+    
+ width: 80%;
+ display: block;
+ margin: auto;
+    
+}
+
+.title {
+    text-align: center;
+}
+
+/*a:hover {
+    background-color: lightgrey;
     color: #fff;
     text-decoration: none;
-}
+     padding: 15px;
+}*/
+
+
+
