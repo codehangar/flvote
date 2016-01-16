@@ -9,9 +9,14 @@
 
     var vm = this;
 
+    function parseData(d) {
+
+    }
+
     vm.fetchBills = function () {
       BillsSvc.fetchBillsThisSession().then(function(d) {
-        vm.bills = d.data.data;
+        vm.allBills = d.data.data;
+        vm.bills = vm.allBills.slice(0,10);
         vm.meta = d.data.meta;
         vm.links = d.data.links;
         generateTwitterShareLink(vm.bills)
@@ -38,12 +43,30 @@
     }
 
     vm.getNextPage = function() {
-      BillsSvc.getNext(vm.links.next)
-        .then(function(d) {
-          $timeout(function() {
-            vm.bills = [].concat(vm.bills, d.data.data);
-          });
-        })
+      var idx = _.findIndex(vm.allBills, function(bill) {
+        return bill.id === vm.bills[vm.bills.length - 1].id
+      });
+      if (idx !== vm.allBills.length - 1) {
+        vm.bills = vm.allBills.slice(0, idx + 10);
+      } else {
+        BillsSvc.fetchNext(vm.links.next)
+          .then(function(d) {
+            vm.allBills = [].concat(vm.allBills, d.data.data);
+            vm.bills = vm.allBills.slice(0, idx + 10);
+          })
+      }
+
+      //var options = {
+      //  current: vm.bills,
+      //  fetched: vm.allBills,
+      //  nextLink: vm.links.next
+      //};
+      //BillsSvc.getNext(options)
+      //  .then(function(d) {
+      //    $timeout(function() {
+      //      vm.bills = [].concat(vm.bills, d.data.data);
+      //    });
+      //  })
     };
 
     vm.init = function () {
