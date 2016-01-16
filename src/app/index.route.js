@@ -11,7 +11,7 @@
 
     $stateProvider
       .state('bills', {
-        url: '/bills',
+        url: '/',
         views: {
           'header': {
             templateUrl: 'app/partials/header.html'
@@ -24,12 +24,9 @@
         }
       })
       .state('bills.detail', {
-        url: '/:id',
+        url: ':id',
         views: {
-          'header': {
-            templateUrl: 'app/partials/header.html'
-          },
-          'content': {
+          'content@': {
             templateUrl: 'app/bill/bill.html',
             controller: 'BillCtrl',
             controllerAs: 'BillCtrl'
