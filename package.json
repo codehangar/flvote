@@ -1,0 +1,23 @@
+{
+  "name": "flvote",
+  "version": "1.0.0",
+  "description": "Tweet To Vote on Florida Bills. A Tabs on Tallahassee - Code for Orlando Project",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Error: no build specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://grailian@github.com/codehangar/flvote.git"
+  },
+  "keywords": [
+    "codefororlando"
+  ],
+  "author": "Ian Grail",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codehangar/flvote/issues"
+  },
+  "homepage": "https://github.com/codehangar/flvote#readme"
+}
