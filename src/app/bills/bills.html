@@ -3,11 +3,11 @@
     
   <div class="bill" ng-repeat="bill in BillsCtrl.bills">
     <a class="billhover" ui-sref="bills.detail({id: bill.id})">
-      <span ng-bind="bill.attributes.title"></span>
+      <span>{{bill.attributes.identifier}}: {{bill.attributes.title}}</span>
       <a class="btn btn-success vote" target="_blank"
-      	ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes</a>
+      	ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{bill.twitterVotes.yes}}</strong></a>
       <a class="btn btn-danger vote" target="_blank"
-         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span> Vote #no</a>
+         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span> Vote #no <strong>{{bill.twitterVotes.no}}</strong></a>
     </a>
   </div>
     <button type="button" class="btn btn-primary" ng-click="BillsCtrl.getNextPage()">LOAD MORE</button>
