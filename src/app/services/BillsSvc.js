@@ -5,16 +5,18 @@
 
             var BASE_CONFIG = {
                 headers: {
-                    "X-APIKEY": '932407d3-d4bd-4beb-8cd2-f4356036b6fc'
+                    //"X-APIKEY": '932407d3-d4bd-4beb-8cd2-f4356036b6fc',
+                    "Content-Type": 'application/vnd.api+json'
                 },
                 method: "GET",
-                url: 'http://www.tabsontallahassee.com/api/bills'
+                url: 'https://www.tabsontallahassee.com/api/bills'
             };
 
             this.fetchBillsThisSession = function() {
                 var params = {
                     params: {
-                        legislative_session: CURRENT_SESSION
+                        legislative_session: 2015,
+                        apikey: '932407d3-d4bd-4beb-8cd2-f4356036b6fc'
                     }
                 };
                 var requestConfig = angular.merge({}, params, BASE_CONFIG);

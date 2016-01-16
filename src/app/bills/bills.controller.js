@@ -8,19 +8,15 @@
   function BillsCtrl(BillsSvc) {
 
     var vm = this;
-    console.log(BillsSvc.fetchBillsThisSession);
+
+    BillsSvc.fetchBillsThisSession().then(function(d) {
+      console.log(d);
+    })
 
     vm.fetchBills = function () {
-      vm.bills = [{
-        id: '1',
-        name: 'Bill Name 1'
-      }, {
-        id: '2',
-        name: 'Bill Name 2'
-      }, {
-        id: '3',
-        name: 'Bill Name 3'
-      }];
+      BillsSvc.fetchBillsThisSession().then(function(d) {
+        vm.bills = d.data.data;
+      })
     };
 
     vm.init = function () {
