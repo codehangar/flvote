@@ -9,10 +9,6 @@
 
     var vm = this;
 
-    function parseData(d) {
-
-    }
-
     vm.fetchBills = function () {
       BillsSvc.fetchBillsThisSession().then(function(d) {
         vm.allBills = d.data.data;
@@ -35,7 +31,7 @@
         var proms = TwitterSvc.getVotesForSpecificBill(identifier);
         proms.then(function(x){
           bill.twitterVotes = x;
-        })
+        });
         bill.voteYesLink = 'https://twitter.com/home?status=I%20support%20%23'+identifier+
         '%20Show%20your%20support,%20vote%20%23'+'yes'+'%20at%20'+billLink+
         '%20%23flvote%20%23tabsontally%20%40CodeForOrlando%20%40tabsontally';
@@ -51,30 +47,19 @@
       });
       if (idx !== vm.allBills.length - 1) {
         vm.bills = vm.allBills.slice(0, idx + 10);
+        generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
       } else {
         BillsSvc.fetchNext(vm.links.next)
           .then(function(d) {
             vm.allBills = [].concat(vm.allBills, d.data.data);
             vm.bills = vm.allBills.slice(0, idx + 10);
+            generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
           })
       }
-
-      //var options = {
-      //  current: vm.bills,
-      //  fetched: vm.allBills,
-      //  nextLink: vm.links.next
-      //};
-      //BillsSvc.getNext(options)
-      //  .then(function(d) {
-      //    $timeout(function() {
-      //      vm.bills = [].concat(vm.bills, d.data.data);
-      //    });
-      //  })
     };
 
     vm.init = function () {
       vm.fetchBills();
-      
     };
 
     vm.init();
