@@ -1,0 +1,9 @@
+<h2>bills.html</h2>
+
+<div>
+  <div ng-repeat="bill in BillsCtrl.bills">
+    <a ui-sref="bills.detail({id: bill.id})">
+      <span ng-bind="bill.name"></span>
+    </a>
+  </div>
+</div>
