@@ -28,19 +28,17 @@
         var billLink = "http://www.flvote.org/#/"+billId
         bill.billId = billId;
         billLink = encodeURIComponent(billLink);
-        console.log(identifier, billLink)
         var proms = TwitterSvc.getVotesForSpecificBill(identifier);
         proms.then(function(x){
           bill.twitterVotes = x;
-          console.log('twitterVotes',bill)
-        })
+        });
         bill.voteYesLink = 'https://twitter.com/home?status=I%20support%20%23'+identifier+
         '%20Show%20your%20support,%20vote%20%23'+'yes'+'%20at%20'+billLink+
         '%20%23flvote%20%23tabsontally%20%40CodeForOrlando%20%40tabsontally';
         bill.voteNoLink = 'https://twitter.com/home?status=I%20don%E2%80%99t%20support%20%23'+identifier+
         '%20Stop%20this%20bill%20by%20voting%20vote%20%23'+'no'+'%20at%20'+ billLink+
         '%20%23flvote%20%23tabsontally%20%40CodeForOrlando%20%40tabsontally%0A;'
-        // console.log(bill);
+
       })
     }
 
@@ -59,22 +57,9 @@
             generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
           })
       }
-
-      //var options = {
-      //  current: vm.bills,
-      //  fetched: vm.allBills,
-      //  nextLink: vm.links.next
-      //};
-      //BillsSvc.getNext(options)
-      //  .then(function(d) {
-      //    $timeout(function() {
-      //      vm.bills = [].concat(vm.bills, d.data.data);
-      //    });
-      //  })
     };
 
     vm.init = function () {
-      console.log('BillsCtrl init');
       vm.fetchBills();
     };
 
