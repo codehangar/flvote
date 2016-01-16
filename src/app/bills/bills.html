@@ -1,26 +1,39 @@
 <div class="container">
-        <h2>Recent Bills</h2>
+        <h1>Recent Bills</h1>
     
   <div class="bill" ng-repeat="bill in BillsCtrl.bills">
     <a class="billhover" ui-sref="bills.detail({id: bill.id})">
       <span ng-bind="bill.attributes.title"></span>
-      <a class="btn btn-default" target="_blank"
-      	ng-href="{{bill.voteYesLink}}">Vote #yes</a>
-      <a class="btn btn-default" target="_blank"
-      ng-href="{{bill.voteNoLink}}">Vote #no</a>
+      <a class="btn btn-success vote" target="_blank"
+      	ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes</a>
+      <a class="btn btn-danger vote" target="_blank"
+         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span> Vote #no</a>
     </a>
   </div>
     <button type="button" class="btn btn-primary" ng-click="BillsCtrl.getNextPage()">LOAD MORE</button>
-    <button type="button" class="btn btn-info">SORT</button>
-    <div class="sort">
-            <h3>What Interests You?</h3>
+    
+    
+    
+      <!--<button type="button" class="btn btn-info">SORT</button>
+    
+    
+    
+  <div class="sort">
+            <h2>What Interests You?</h2>
             Sorting box goes here.<br>
         <div class="container">
            <button type="button" class="btn btn-success">GO!</button>
-        <button type="button" class="btn btn-warning">CLEAR</button>
+        <button type="button" class="btn btn-danger">CLEAR</button>
         </div>
      
        <br> Sorted item goes here.
+    </div>   -->
+    
+    <hr>
+    
+    <div class="footer">
+       <p>Thanks to <a href="http://tabsontallahassee.com"> Tabs on Tallahassee</a> for providing tools to get the latest Florida Legislature info.</p> 
+    
     </div>
     
 </div>
