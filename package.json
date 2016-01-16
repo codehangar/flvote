@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/codehangar/flvote#readme",
   "dependencies": {
+    "apicache": "0.0.12",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "twitter": "^1.2.5"
