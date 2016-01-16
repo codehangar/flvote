@@ -1,12 +1,7 @@
 # #flvote
 Tweet To Vote on Florida Bills. A Tabs on Tallahassee - Code for Orlando Project
 
-Team Members:
-- Cassandra Wilcox
-- Charlie Behrens
-- Eli Murray
-- Ian Grail
-- Stacey Baldini
+[![Build Status](https://travis-ci.org/codehangar/flvote.svg?branch=master)](https://travis-ci.org/codehangar/flvote)
 
 The [Tabs on Tallahassee Hackathon](http://www.meetup.com/Code-For-Orlando/events/227297615/) at Canvs Orlando, FL on Jan. 16, 2016 inspired this project. The goal of the Hackathon was to use the new [Tabs on Tallahassee API](https://tabsontallahassee.com/api/) to build a digital tool that makes data from the Florida House and/or Senate easier to access and that will help everyday citizens find legislation that matters to them.
 
