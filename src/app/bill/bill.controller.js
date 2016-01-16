@@ -10,11 +10,15 @@
     var vm = this;
 
     vm.fetchBill = function () {
+      console.log('fetchBill')
     };
 
     vm.init = function () {
-      console.log('BillCtrl init');
       vm.fetchBill();
+      vm.hashtagBill = "HB409";
+      vm.hashtagYes = "yes";
+      vm.billLink = encodeURIComponent("http://www.google.com");
+      console.log('BillCtrl init', vm.billLink);
     };
 
     vm.init();
