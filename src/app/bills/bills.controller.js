@@ -32,7 +32,7 @@
         var billLink = "http://www.flvote.org/#/"+billId
         bill.billId = billId;
         billLink = encodeURIComponent(billLink);
-        console.log(identifier, billLink)
+        console.log(bill)
         var proms = TwitterSvc.getVotesForSpecificBill(identifier);
         proms.then(function(x){
           bill.twitterVotes = x;
