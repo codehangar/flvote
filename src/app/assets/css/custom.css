@@ -103,7 +103,10 @@ a {
         float: left;
     
     }
-    
-    
-    
+        
 }
+
+    ol, li {
+        font-size: 1.75rem;
+        
+    }
