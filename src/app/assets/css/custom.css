@@ -1,0 +1,34 @@
+* {
+    line-height: 1.5;
+}
+
+
+.logo {
+
+    width: 50%;
+    
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.btn {
+    margin-top: 2%;
+}
+
+.bill {
+    padding: 15px;
+}
+
+a { 
+
+    font-size: 2rem;
+    padding: 15px;
+}
+
+a:hover {
+    background-color: lightslategray;
+    color: #fff;
+    text-decoration: none;
+}

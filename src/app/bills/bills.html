@@ -1,9 +1,28 @@
-<h2>bills.html</h2>
-
-<div>
-  <div ng-repeat="bill in BillsCtrl.bills">
-    <a ui-sref="bills.detail({id: bill.id})">
-      <span ng-bind="bill.name"></span>
+<div class="container">
+        <h2>Recent Bills</h2>
+    
+  <div class="bill" ng-repeat="bill in BillsCtrl.bills">
+    <a class="billhover" ui-sref="bills.detail({id: bill.id})">
+      <span ng-bind="bill.attributes.title"></span>
+      <a class="btn btn-default" target="_blank"
+      	ng-href="{{bill.voteYesLink}}">Vote #yes</a>
+      <a class="btn btn-default" target="_blank"
+      ng-href="{{bill.voteNoLink}}">Vote #no</a>
     </a>
   </div>
+    <button type="button" class="btn btn-primary">LOAD MORE</button>
+    <button type="button" class="btn btn-info">SORT</button>
+    <div class="sort">
+            <h3>What Interests You?</h3>
+            Sorting box goes here.<br>
+        <div class="container">
+           <button type="button" class="btn btn-success">GO!</button>
+        <button type="button" class="btn btn-warning">CLEAR</button>
+        </div>
+     
+       <br> Sorted item goes here.
+    </div>
+    
 </div>
+  </body>
+</html>
