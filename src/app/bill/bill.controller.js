@@ -12,17 +12,11 @@
     vm.fetchBill = function () {
       var billId = decodeURIComponent($stateParams.id);
       
-      console.log('fetchBillsss', billId)
-      
       BillsSvc.fetchBillByID(billId).then(function(d) {
         vm.bill = d.data.data;
-        console.log(vm.bill)
         var identifier = vm.bill.attributes.identifier;
         var billId = vm.bill.id.replace(/\//g, "_");
-        var billLink = "http://www.flvote.org/#/"+billId
-        // vm.meta = d.data.meta;
-        // vm.links = d.data.links;
-        // generateTwitterShareLink(vm.bills)
+        var billLink = "http://www.flvote.org/"+billId
         billLink = encodeURIComponent(billLink);
         vm.bill.voteYesLink = 'https://twitter.com/home?status=I%20support%20%23'+identifier+
         '%20Show%20your%20support,%20vote%20%23'+'yes'+'%20at%20'+billLink+
@@ -39,7 +33,6 @@
       vm.hashtagBill = "HB409";
       vm.hashtagYes = "yes";
       vm.billLink = encodeURIComponent("http://www.google.com");
-      console.log('BillCtrl init', vm.billLink);
     };
 
     vm.init();

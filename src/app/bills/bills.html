@@ -5,28 +5,25 @@
       
     <div class="bill-left">
       
-         <a ui-sref="bills.detail({id: bill.id})">  
+        <a ui-sref="bills.detail({id: bill.billId})">
         <span class="billhover billname" ng-bind="bill.attributes.title">
         </a>
              </div>
         
         <div class="bill-right">
-         <a class="btn btn-danger vote" target="_blank"
-         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span> Vote #no</a>
+              <a class="btn btn-danger vote" target="_blank"
+         ng-href="{{bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{bill.twitterVotes.no}}</strong></a>
         
       <a class="btn btn-success vote" target="_blank"
-      	ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span> Vote #yes</a>
+        ng-href="{{bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{bill.twitterVotes.yes}}</strong></a>
+    </a>
             </div>
       
       </div>
- 
-        
         
         </div>
         
        
-      
-  
   </div>
     <button type="button" class="btn btn-primary loadmore" ng-click="BillsCtrl.getNextPage()">LOAD MORE</button>
     
