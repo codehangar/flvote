@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Tweet To Vote on Florida Bills. A Tabs on Tallahassee - Code for Orlando Project",
   "main": "index.html",
+  "engines": {
+    "node": ">=4.1 <5",
+    "npm": ">=3.1 <4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "echo \"Error: no build specified\"",
