@@ -5,21 +5,16 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl() {
+  function BillsCtrl(BillsSvc) {
 
     var vm = this;
 
     vm.fetchBills = function () {
-      vm.bills = [{
-        id: '1',
-        name: 'Bill Name 1'
-      }, {
-        id: '2',
-        name: 'Bill Name 2'
-      }, {
-        id: '3',
-        name: 'Bill Name 3'
-      }];
+      BillsSvc.fetchBillsThisSession().then(function(d) {
+        vm.bills = d.data.data;
+        vm.meta = d.data.meta;
+        vm.links = d.data.links;
+      })
     };
 
     vm.init = function () {

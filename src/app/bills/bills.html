@@ -41,7 +41,7 @@
     </table>
   <div ng-repeat="bill in BillsCtrl.bills">
     <a ui-sref="bills.detail({id: bill.id})">
-      <span ng-bind="bill.name"></span>
+      <span ng-bind="bill.attributes.title"></span>
     </a>
   </div>
     <button type="button" class="btn btn-primary">LOAD MORE</button>
