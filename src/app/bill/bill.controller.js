@@ -19,10 +19,11 @@
         console.log(vm.bill)
         var identifier = vm.bill.attributes.identifier;
         var billId = vm.bill.id.replace(/\//g, "_");
-        var billLink = "http://www.flvote.org/"+billId
+        var billLink = "http://www.flvote.org/#/"+billId
         // vm.meta = d.data.meta;
         // vm.links = d.data.links;
         // generateTwitterShareLink(vm.bills)
+        billLink = encodeURIComponent(billLink);
         vm.bill.voteYesLink = 'https://twitter.com/home?status=I%20support%20%23'+identifier+
         '%20Show%20your%20support,%20vote%20%23'+'yes'+'%20at%20'+billLink+
         '%20%23flvote%20%23tabsontally%20%40CodeForOrlando%20%40tabsontally';
