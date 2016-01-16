@@ -33,6 +33,11 @@
         id = id.replace('_','/');
         var requestConfig = angular.merge({}, BASE_CONFIG, {url: 'https://www.tabsontallahassee.com/api/' + id});
         return $http(requestConfig);
+      };
+
+      this.getNext = function(url) {
+        var requestConfig = angular.merge({}, BASE_CONFIG, {url: url});
+        return $http(requestConfig);
       }
     });
 })();
