@@ -14,7 +14,7 @@
         vm.bills = d.data.data;
         vm.meta = d.data.meta;
         vm.links = d.data.links;
-      })
+      });
     };
 
     vm.init = function () {
