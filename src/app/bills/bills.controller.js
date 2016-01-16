@@ -5,7 +5,7 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, $timeout) {
+  function BillsCtrl(BillsSvc, TwitterSvc, $timeout) {
 
     var vm = this;
 
@@ -72,6 +72,10 @@
     vm.init = function () {
       console.log('BillsCtrl init');
       vm.fetchBills();
+      var proms = TwitterSvc.getVotesForSpecificBill('HB409')
+      proms.then(function(x){
+        console.log(x)
+      })
     };
 
     vm.init();
