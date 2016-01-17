@@ -17,7 +17,7 @@
       this.fetchBillsThisSession = function () {
         var params = {
           params: {
-            legislative_session: 2015
+            legislative_session: 2016
           }
         };
         var requestConfig = angular.merge({}, params, BASE_CONFIG);
