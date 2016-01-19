@@ -2,13 +2,12 @@
     line-height: 1.5;
 }
 
-
 p {
     font-size: 1.25em;
 }
 
-h1 { 
-   color: #009FDA;  
+h1 {
+    color: #009FDA;
 }
 
 h2 {
@@ -18,37 +17,38 @@ h2 {
 
 .vote {
     margin-left: 1%;
+    float: right;
 }
 
 .bill {
     padding: 15px;
+    border-bottom: #333 dashed 1px;
 }
 
 .billname {
     text-overflow: ellipsis;
-    
-}
 
+}
 
 .billhover:hover {
- background-color: #f9f9f9;
- padding: 10px;
- text-decoration: none;  
+    background-color: #f9f9f9;
+    padding: 10px;
+    text-decoration: none;
 }
 
-a { 
+a {
 
     font-size: 2rem;
     text-decoration: none !important;
-   
+
 }
 
 .logo {
-    
- width: 80%;
- display: block;
- margin: auto;
-    
+
+    width: 80%;
+    display: block;
+    margin: auto;
+
 }
 
 .title {
@@ -62,51 +62,54 @@ a {
      padding: 15px;
 }*/
 
-.vote {
-    
-    float: right;
-}
 
-.container {  
-    
+.container {
+
 }
 
 .loadmore {
     margin-left: 2%;
     margin-top: 2%;
-    
+
 }
 
 .glyphicon {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .loadmore {
-   margin-top: 2%; 
+    margin-top: 4%;
 }
-
 
 .bill-left {
     width: 50%;
     text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.bill-right {
+    /*width: 100%;*/
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+    /*float: right;*/
+    display: inline;
 }
 
 @media (max-width: 990px) {
     .bill-left {
         width: 100%;
     }
-    
+
     .bill-right {
         width: 100%;
         margin-top: 20px;
         margin-bottom: 20px;
         float: left;
-    
     }
-        
+
 }
 
-    ol, li {
-        font-size: 1.75rem;
-        
-    }
+ol, li {
+    font-size: 1.75rem;
+
+}

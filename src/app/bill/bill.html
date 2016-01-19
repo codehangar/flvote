@@ -1,10 +1,19 @@
 <div class="container">
     <h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
+    <h3>
+        Legislative Session:
+        <span ng-bind="BillCtrl.bill.attributes.legislative_session.name"></span>
+    </h3>
 
-	<a class="btn btn-danger vote" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}"><span class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{BillCtrl.bill.twitterVotes.no}}</strong></a>
-        <a class="btn btn-success vote" target="_blank" ng-href="{{BillCtrl.bill.voteYesLink}}"><span class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{BillCtrl.bill.twitterVotes.yes}}</strong></a>
+    <a class="btn btn-danger vote" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}"><span
+            class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{BillCtrl.bill.twitterVotes.no}}</strong></a>
+    <a class="btn btn-success vote" target="_blank" ng-href="{{BillCtrl.bill.voteYesLink}}"><span
+            class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{BillCtrl.bill.twitterVotes.yes}}</strong></a>
 
-    <p><strong>Subjects:</strong> <span ng-repeat="subject in BillCtrl.bill.attributes.subject" style="margin:5px">{{subject}}</span></p>
+    <p><strong>Subjects:</strong> <span ng-repeat="subject in BillCtrl.bill.attributes.subject" style="margin:5px">{{subject}}</span>
+    </p>
+
+    <hr>
     <p><strong>Learn More (Documents):</strong></p>
     <div ng-repeat="doc in BillCtrl.bill.attributes.documents" style="margin:5px;">
         {{doc.note}}
@@ -12,17 +21,30 @@
             <a ng-href="{{link.url}}" target="_blank">{{link.url}}</a>
         </div>
     </div>
-    <p><strong>Vote!:</strong></p>
-    <div>
-        <!-- <a class="btn btn-default" target="_blank"
-      	ng-href="{{BillCtrl.bill.voteYesLink}}">Vote #yes ({{yesVotes}})</a>
-      <a class="btn btn-default" target="_blank"
-      ng-href="{{BillCtrl.bill.voteNoLink}}">Vote #no ({{noVotes}})</a> -->
-        
-    </div>
+
     <hr>
-<div class="footer">
-    <p>Thanks to <a href="http://tabsontallahassee.com"> Tabs on Tallahassee</a> for providing tools to get the latest Florida Legislature info.</p>
-</div>
+    <p><strong>Sources:</strong></p>
+    <div ng-repeat="source in BillCtrl.bill.attributes.sources">
+        <span>{{ source.note }}</span>
+        <div>
+            <a ng-href="{{source.url}}" target="_blank">{{source.url}}</a>
+        </div>
+    </div>
+
+    <hr>
+    <p><strong>Sponsorships:</strong></p>
+    <div ng-repeat="sponsor in BillCtrl.bill.attributes.sponsorships">
+        <span>{{ sponsor.person.url }}</span>
+        <div>
+            <img ng-src="{{sponsor.person.image}}"/>
+            <a ng-href="{{sponsor.person.url}}" target="_blank">{{sponsor.person.name}}</a>
+        </div>
+    </div>
+
+    <hr>
+    <div class="footer">
+        <p>Thanks to <a href="http://tabsontallahassee.com"> Tabs on Tallahassee</a> for providing tools to get the
+            latest Florida Legislature info.</p>
+    </div>
 </div>
 

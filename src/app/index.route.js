@@ -26,6 +26,9 @@
       .state('bills.detail', {
         url: ':id',
         views: {
+          'header@': {
+            templateUrl: 'app/partials/header.html'
+          },
           'content@': {
             templateUrl: 'app/bill/bill.html',
             controller: 'BillCtrl',
