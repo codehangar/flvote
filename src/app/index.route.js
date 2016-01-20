@@ -16,6 +16,9 @@
           'header': {
             templateUrl: 'app/partials/header.html'
           },
+          'footer': {
+            templateUrl: 'app/partials/footer.html'
+          },
           'content': {
             templateUrl: 'app/bills/bills.html',
             controller: 'BillsCtrl',
@@ -26,9 +29,6 @@
       .state('bills.detail', {
         url: ':id',
         views: {
-          'header@': {
-            templateUrl: 'app/partials/header.html'
-          },
           'content@': {
             templateUrl: 'app/bill/bill.html',
             controller: 'BillCtrl',
