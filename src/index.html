@@ -12,20 +12,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Bootstrap min-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-      
+
          <!-- Custom Styles -->
 
-        <link rel="stylesheet" href="app/assets/css/custom.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="app/assets/css/custom.css">
   </head>
 
   <body>
     <!--[if lt IE 10]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <p class="browsehappy">
+      You are using an <strong>outdated</strong> browser.
+      Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </p>
     <![endif]-->
 
     <div ui-view="header"></div>
     <div ui-view="content" class="main-app-content"></div>
-
+    <div ui-view="footer"></div>
 
     <!-- Libs -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
