@@ -5,12 +5,16 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, TwitterSvc, $timeout) {
+  function BillsCtrl(BillsSvc, TwitterSvc, $timeout, $location) {
 
     var vm = this;
 
-    vm.fetchBills = function () {
-      BillsSvc.fetchBillsThisSession().then(function(d) {
+    vm.fetchBills = function (query) {
+      var params = {
+        q: query,
+        subject: vm.subject
+      };
+      BillsSvc.fetchBillsCustomParams(params).then(function(d) {
         vm.allBills = d.data.data;
         vm.bills = vm.allBills.slice(0,10);
         vm.meta = d.data.meta;
@@ -59,6 +63,8 @@
     };
 
     vm.init = function () {
+      vm.subject = $location.search().subject;
+
       vm.fetchBills();
     };
 
