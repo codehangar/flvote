@@ -7,7 +7,7 @@
         headers: {
           "Content-Type": 'application/json'
         },
-        url: "http://flvote.herokuapp.com/1.1/search/tweets.json"
+        url: "/api/twitter/1.1/search/tweets.json"
       };
 
       this.getTweetsTaggedFLVOTE = function() {

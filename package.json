@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "echo \"Error: no build specified\"",
-    "start": "node uiserver.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

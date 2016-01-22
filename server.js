@@ -31,8 +31,8 @@ app.get('/health', function (req, res) {
   res.status(200).send('ok');
 });
 
-/** health check route */
-app.get('/1.1/*', cache('3 minutes'), function (req, res) {
+/** twitter api proxy */
+app.get('/api/twitter/1.1/*', cache('3 minutes'), function (req, res) {
 
   var client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
