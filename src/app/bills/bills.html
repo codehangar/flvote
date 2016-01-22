@@ -55,7 +55,7 @@
                 <span class="billhover billname" ng-bind="bill.attributes.title"></span>
             </a>
           </div>
-            <a ng-href="/?subject={{subject}}" ng-repeat="subject in bill.attributes.subject" class="badge" style="margin:5px">{{subject}}</a>
+            <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in bill.attributes.subject" class="badge" style="margin:5px">{{subject}}</a>
         </div>
 
         <div class="bill-right">
