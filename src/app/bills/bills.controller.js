@@ -5,7 +5,7 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, TwitterSvc, $timeout, $location) {
+  function BillsCtrl(BillsSvc, TwitterSvc, $timeout, $location, $stateParams) {
 
     var vm = this;
 
@@ -63,7 +63,7 @@
     };
 
     vm.init = function () {
-      vm.subject = $location.search().subject;
+      vm.subject = $stateParams.subject;
 
       vm.fetchBills();
     };

@@ -26,6 +26,16 @@
           }
         }
       })
+      .state('bills.bySubject', {
+        url: 'subject/:subject',
+        views: {
+          'content@': {
+            templateUrl: 'app/bills/bills.html',
+            controller: 'BillsCtrl',
+            controllerAs: 'BillsCtrl'
+          }
+        }
+      })
       .state('bills.detail', {
         url: ':id',
         views: {

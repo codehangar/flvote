@@ -13,7 +13,7 @@
 
     <p>
         <strong>Subjects:</strong>
-        <a ng-href="/?subject={{subject}}" ng-repeat="subject in BillCtrl.bill.attributes.subject" class="badge" style="margin:5px">{{subject}}</a>
+        <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in BillCtrl.bill.attributes.subject" class="badge" style="margin:5px">{{subject}}</a>
     </p>
 
     <hr>
