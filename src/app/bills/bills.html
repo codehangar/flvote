@@ -23,7 +23,14 @@
                     <br/>
                     <p class="text-center"><a
                             href="http://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/"
-                            target="_blank" class="btn btn-primary btn-block btn-lg">Register Now</a></p>
+                            target="_blank" class="btn btn-primary btn-block btn-lg"
+                            onClick="ga('send', {
+                            'hitType': 'event',
+                            'eventCategory': 'External URL',
+                            'eventAction': 'Register to Vote',
+                            'eventLabel': 'Voter Registration Button',
+                            'eventValue': 1
+                            });">Register Now</a></p>
                 </div>
 
             </div>
@@ -59,12 +66,14 @@
         </div>
 
         <div class="bill-right">
-            <a class="btn btn-danger vote" target="_blank" ng-href="{{bill.voteNoLink}}">
+            <a class="btn btn-danger vote" target="_blank" ng-href="{{bill.voteNoLink}}"
+                ng-click="BillsCtrl.voteNo(bill)">
                 <span class="glyphicon glyphicon-menu-down"></span>Vote #no
                 <strong>{{bill.twitterVotes.no}}</strong>
             </a>
 
-            <a class="btn btn-success vote" target="_blank" ng-href="{{bill.voteYesLink}}">
+            <a class="btn btn-success vote" target="_blank" ng-href="{{bill.voteYesLink}}"
+                ng-click="BillsCtrl.voteYes(bill)">
                 <span class="glyphicon glyphicon-menu-up"></span>Vote #yes
                 <strong>{{bill.twitterVotes.yes}}</strong>
             </a>
