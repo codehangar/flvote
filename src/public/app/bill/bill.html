@@ -68,10 +68,9 @@
     <hr>
     <p><strong>Sponsorships:</strong></p>
     <div ng-repeat="sponsor in BillCtrl.bill.attributes.sponsorships">
-        <span>{{ sponsor.person.url }}</span>
         <div>
-            <img ng-src="{{sponsor.person.image}}"/>
-            <a ng-href="{{sponsor.person.url}}" target="_blank">{{sponsor.person.name}}</a>
+            <img ng-src="{{sponsor.person.image}}" height="200"/>
+            <p>{{sponsor.person.name}}</p>
         </div>
     </div>
 </div>
