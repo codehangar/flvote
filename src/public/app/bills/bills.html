@@ -40,27 +40,34 @@
     <!-- Bills List -->
     <h1>Recent Bills</h1>
     <div class="row">
-        <form class="form-inline">
-          <div class="col-md-6">
-            <div class="form-group">
-              <input type="text" class="form-control" id="query" ng-model="query" placeholder="Search">
-              <button type="submit" class="btn btn-default" ng-click="BillsCtrl.fetchBills(query)">Submit</button>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-inline">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="query" ng-model="query" placeholder="Search">
+                      <button type="submit" class="btn btn-default" ng-click="BillsCtrl.fetchBills(query)">Submit</button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="pull-right">
+                        <strong ng-show="BillsCtrl.subject">Filtering By Subject:</strong>
+                        <a href="/"class="badge" ng-click="BillsCtrl.subject = ''" ng-bind="BillsCtrl.subject"></a>
+                    </p>
+                  </div>
+                </form>
             </div>
-          </div>
-          <div class="col-md-6">
-            <label ng-show="BillsCtrl.subject">Filtering By Subject:</label>
-            <a href="/"class="badge" ng-click="BillsCtrl.subject = ''" ng-bind="BillsCtrl.subject"></a>
-          </div>
-        </form>
+        </div>
     </div>
     <div class="bill" ng-repeat="bill in BillsCtrl.bills">
 
         <div class="bill-left">
           <div>
-            <strong ng-bind="bill.attributes.identifier"></strong>
-            <a ui-sref="bills.detail({id: bill.billId})">
-                <span class="billhover billname" ng-bind="bill.attributes.title"></span>
+            <a ui-sref="bills.detail({id: bill.billId})" class="billhover billname">
+                <strong ng-bind="bill.attributes.identifier"></strong>
+                <span ng-bind="bill.attributes.title"></span>
             </a>
+            <p>{{bill.attributes.legislative_session.name}}</p>
           </div>
             <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in bill.attributes.subject" class="badge" style="margin:5px">{{subject}}</a>
         </div>
