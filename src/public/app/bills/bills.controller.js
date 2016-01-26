@@ -57,27 +57,31 @@
     }
 
     vm.getNextPage = function() {
-      var idx = _.findIndex(vm.allBills, function(bill) {
-        return bill.id === vm.bills[vm.bills.length - 1].id
-      });
-      console.log('idx',idx)
-      if (idx !== vm.allBills.length - 1) {
+
+      var idx = vm.bills.length - 1;
+
+      if (vm.bills.length < vm.allBills.length) {
         vm.bills = vm.allBills.slice(0, idx + 10);
         generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
-      } else {
+        sendGAEvent();
+      } else if (vm.links.next) {
         BillsSvc.fetchNext(vm.links.next)
           .then(function(d) {
             vm.allBills = [].concat(vm.allBills, d.data.data);
             vm.bills = vm.allBills.slice(0, idx + 10);
-            generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
+            generateTwitterShareLink(vm.bills.slice(idx, idx + 10));
+            sendGAEvent();
           })
       }
-      ga('send', {
-        'hitType': 'event',
-        'eventCategory': 'User Find Bills',
-        'eventAction': 'Click Load More',
-        'eventLabel': 'Show ' + vm.bills.length + '  results'
-        });
+
+      function sendGAEvent(){
+        ga('send', {
+          'hitType': 'event',
+          'eventCategory': 'User Find Bills',
+          'eventAction': 'Click Load More',
+          'eventLabel': 'Show ' + vm.bills.length + '  results'
+          });
+      }
     };
 
     vm.init = function () {
