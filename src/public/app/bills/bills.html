@@ -96,6 +96,6 @@
         <div class="clearfix"></div>
     </div>
 
-    <button type="button" class="btn btn-block btn-lg btn-primary loadmore" ng-click="BillsCtrl.getNextPage()">LOAD MORE</button>
+    <button type="button" class="btn btn-block btn-lg btn-primary loadmore" ng-click="BillsCtrl.getNextPage()" ng-show="BillsCtrl.bills.length < BillsCtrl.allBills.length || BillsCtrl.links.next">LOAD MORE</button>
 </div>
 
