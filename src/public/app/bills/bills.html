@@ -1,41 +1,46 @@
-<div class="container">
+<div style="background-color:#333; padding:20px 0;">
+    <div class="container">
+        <!-- Register To Vote -->
+        <div class="row">
+            <div class="col-xs-12 col-md-8" style="color:#fff">
+                <h1>Vote with a Tweet!</h1>
+                <p>Welcome! Use #FLVote to harness Twitter to influence Bills in the Florida Legislature.</p>
+                <h3>Vote Yes or No in just 3 easy steps:</h3>
+                <ol>
+                    <li>Pick the Bill</li>
+                    <li>Vote #YES or #NO to create your tweet</li>
+                    <li>Share it on Twitter</li>
+                </ol>
+                <p>Promote your views or add your favorite hashtag by customizing your tweet before sharing. If someone
+                    ReTweets yours, then that’s another vote for your side.</p>
+                <p>We don’t store any of your info. The conversation happens out on the Twitterverse.</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <h1>Are you Registered to Vote in FL?</h1>
+                        <p>The first step to making a real difference in your community is registering to vote!</p>
+                        <br/>
+                        <p class="text-center"><a
+                                href="http://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/"
+                                target="_blank" class="btn btn-primary btn-block btn-lg"
+                                onClick="ga('send', {
+                                'hitType': 'event',
+                                'eventCategory': 'External URL',
+                                'eventAction': 'Register to Vote',
+                                'eventLabel': 'Voter Registration Button',
+                                'eventValue': 1
+                                });">Register Now</a></p>
+                    </div>
 
-    <!-- Register To Vote -->
-    <div class="row">
-        <div class="col-xs-12 col-md-8">
-            <h1>Vote with a Tweet!</h1>
-            <p>Welcome! Use #FLVote to harness Twitter to influence Bills in the Florida Legislature.</p>
-            <h3>Vote Yes or No in just 3 easy steps:</h3>
-            <ol>
-                <li>Pick the Bill</li>
-                <li>Vote Yes or No to create your tweet</li>
-                <li>Share it on Twitter</li>
-            </ol>
-            <p>Promote your views or add your favorite hashtag by customizing your tweet before sharing. If someone
-                ReTweets yours, then that’s another vote for your side.</p>
-            <p>We don’t store any of your info. The conversation happens out on the Twitterverse.</p>
-        </div>
-        <div class="col-xs-12 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-body text-center">
-                    <h2>Are you Registered to Vote in FL?</h2>
-                    <p>The first step to making a real difference in your community is registering to vote!</p>
-                    <br/>
-                    <p class="text-center"><a
-                            href="http://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/"
-                            target="_blank" class="btn btn-primary btn-block btn-lg"
-                            onClick="ga('send', {
-                            'hitType': 'event',
-                            'eventCategory': 'External URL',
-                            'eventAction': 'Register to Vote',
-                            'eventLabel': 'Voter Registration Button',
-                            'eventValue': 1
-                            });">Register Now</a></p>
                 </div>
-
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+
+    
 
     <!-- Bills List -->
     <h1>Recent Bills</h1>
@@ -75,13 +80,13 @@
         <div class="bill-right">
             <a class="btn btn-danger vote" target="_blank" ng-href="{{bill.voteNoLink}}"
                 ng-click="BillsCtrl.voteNo(bill)">
-                <span class="glyphicon glyphicon-menu-down"></span>Vote #no
+                <span class="glyphicon glyphicon-menu-down"></span>Vote #NO
                 <strong>{{bill.twitterVotes.no}}</strong>
             </a>
 
             <a class="btn btn-success vote" target="_blank" ng-href="{{bill.voteYesLink}}"
                 ng-click="BillsCtrl.voteYes(bill)">
-                <span class="glyphicon glyphicon-menu-up"></span>Vote #yes
+                <span class="glyphicon glyphicon-menu-up"></span>Vote #YES
                 <strong>{{bill.twitterVotes.yes}}</strong>
             </a>
 
