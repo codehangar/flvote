@@ -51,11 +51,11 @@ app.get('/api/twitter/1.1/*', cache('3 minutes'), function (req, res) {
 });
 
 /** Static Files */
-app.use('/', express.static(__dirname + '/src'));
+app.use('/', express.static(__dirname + '/src/public'));
 
 /** This route deals enables HTML5Mode by forwarding missing files to the index.html */
 app.get('/*', function (req, res) {
-  res.sendFile(__dirname + '/src/index.html')
+  res.sendFile(__dirname + '/src/public/index.html')
 });
 
 var port = process.env.PORT || 8080;
