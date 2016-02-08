@@ -19,4 +19,8 @@ TWITTER_CONSUMER_SECRET={{your_secret}}
 
 TWITTER_ACCESS_TOKEN={{your_token}}
 TWITTER_ACCESS_TOKEN_SECRET={{your_secret}}
+
+DATABASE_HOST={{host}}
+DATABASE_PORT={{post}}
+DATABASE_NAME=flvote
 ```
