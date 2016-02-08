@@ -12,6 +12,7 @@ var express = require('express');
 var Twitter = require('twitter');
 var Apicache = require('apicache');
 var cache = Apicache.middleware;
+var TwitterStreamingService = require('./src/services/TwitterStreamingService.js');
 
 var app = express();
 
@@ -50,12 +51,20 @@ app.get('/api/twitter/1.1/*', cache('3 minutes'), function (req, res) {
 
 });
 
+/** Register API Middleware **/
+/** VOTES **/
+app.get('/api/v1/votes', require('./src/api/v1/votes/list.votes.js'));
+app.get('/api/v1/votes/:billIdentifier', require('./src/api/v1/votes/get.votes.js'));
+
+/** Start Twitter Streaming Api **/
+TwitterStreamingService.startStream();
+
 /** Static Files */
-app.use('/', express.static(__dirname + '/src'));
+app.use('/', express.static(__dirname + '/src/public'));
 
 /** This route deals enables HTML5Mode by forwarding missing files to the index.html */
 app.get('/*', function (req, res) {
-  res.sendFile(__dirname + '/src/index.html')
+  res.sendFile(__dirname + '/src/public/index.html')
 });
 
 var port = process.env.PORT || 8080;

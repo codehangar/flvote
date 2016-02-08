@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "echo \"Error: no build specified\"",
-    "start": "node server.js"
+    "start": "NODE_ENV=local node server.js"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,11 @@
   "homepage": "https://github.com/codehangar/flvote#readme",
   "dependencies": {
     "apicache": "0.0.12",
+    "co": "^4.6.0",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
+    "rethinkdb": "^2.2.1",
+    "twit": "^2.2.2",
     "twitter": "^1.2.5"
   }
 }
