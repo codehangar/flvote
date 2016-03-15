@@ -38,8 +38,8 @@ h2 {
 
 a {
 
-    font-size: 2rem;
-    text-decoration: none !important;
+    /*font-size: 2rem;*/
+    /*text-decoration: none !important;*/
 
 }
 
@@ -110,6 +110,6 @@ a {
 }
 
 ol, li {
-    font-size: 1.75rem;
+    /*font-size: 1.75rem;*/
 
 }
