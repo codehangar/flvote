@@ -24,11 +24,15 @@
     <div class="row">
         <!-- FULL -->
         <div class="col-md-12">
+            
+        </div>
+        <!-- LEFT -->
+        <div class="col-md-8">
             <!-- ACTIONS -->
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Recent Actions</strong></div>
                 <div class="panel-body">
-                    <table class="table table-striped">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -38,7 +42,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="action in BillCtrl.bill.attributes.actions | orderBy:'date':true ">
+                            <tr ng-repeat="action in BillCtrl.bill.attributes.actions | orderBy:'date':true "
+                                ng-class="{warning:$index === 0}"
+                            >
                                 <td><strong>{{action.order + 1}}</strong></td>
                                 <td>{{action.date}}</td>
                                 <td>{{action.description}}</td>
@@ -48,12 +54,9 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <!-- LEFT -->
-        <div class="col-md-8">
             <!-- COMMENTS -->
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>Comments</strong></div>
+                <div class="panel-heading"><strong>Converstion</strong></div>
                 <div class="panel-body">
                     <dir-disqus config="BillCtrl.disqusConfig"></dir-disqus>
                 </div>
@@ -61,6 +64,18 @@
         </div>
         <!-- RIGHT -->
         <div class="col-md-4">
+            <!-- Sponsorships -->
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Sponsorship</strong></div>
+                <div class="panel-body" style="overflow-wrap: break-word;">
+                    <div ng-repeat="sponsor in BillCtrl.bill.attributes.sponsorships">
+                        <div>
+                            <img ng-src="{{sponsor.person.image}}" height="200" />
+                            <p><span class="label label-primary" ng-if="sponsor.primary">Primary Sponsor</span> {{sponsor.person.name}}</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- SUBJECTS -->
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Subjects</strong></div>
@@ -90,18 +105,6 @@
                         {{doc.note}}
                         <div ng-repeat="link in doc.links" style="margin-left:10px;">
                             <a ng-href="{{link.url}}" target="_blank">{{link.url}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Sponsorships -->
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong>Sponsorships</strong></div>
-                <div class="panel-body" style="overflow-wrap: break-word;">
-                    <div ng-repeat="sponsor in BillCtrl.bill.attributes.sponsorships">
-                        <div>
-                            <img ng-src="{{sponsor.person.image}}" height="200" />
-                            <p>{{sponsor.person.name}}</p>
                         </div>
                     </div>
                 </div>

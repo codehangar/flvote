@@ -5,7 +5,7 @@
     .module('flvote')
     .controller('BillCtrl', BillCtrl);
 
-  function BillCtrl(TwitterSvc, BillsSvc, $stateParams, $window) {
+  function BillCtrl(TwitterSvc, BillsSvc, $stateParams, $window, $http) {
 
     var vm = this;
 
@@ -16,6 +16,8 @@
         vm.bill = d.data.data;
         TwitterSvc.addTwitterLinksToBill(vm.bill);
       })
+
+      
 
     };
 
