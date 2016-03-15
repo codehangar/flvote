@@ -20,7 +20,10 @@
         vm.meta = d.data.meta;
         vm.links = d.data.links;
         generateTwitterShareLink(vm.bills)
+        getExtraBillInfo(vm.bills);
       })
+      
+
       // GA tracking
       ga('send', {
         'hitType': 'event',
@@ -64,6 +67,7 @@
         vm.bills = vm.allBills.slice(0, idx + 10);
         generateTwitterShareLink(vm.bills.slice(idx, idx + 10))
         sendGAEvent();
+        getExtraBillInfo();
       } else if (vm.links.next) {
         BillsSvc.fetchNext(vm.links.next)
           .then(function(d) {
@@ -71,6 +75,7 @@
             vm.bills = vm.allBills.slice(0, idx + 10);
             generateTwitterShareLink(vm.bills.slice(idx, idx + 10));
             sendGAEvent();
+            getExtraBillInfo();
           })
       }
 
@@ -83,6 +88,18 @@
           });
       }
     };
+
+    function getExtraBillInfo(bills){
+      console.log('getExtraBillInfo', vm.bills);
+      angular.forEach(vm.bills, function(bill){
+        BillsSvc.fetchBillByID(bill.billId).then(function(d) {
+          bill.extra = d.data.data;
+          angular.forEach(bill.extra.attributes.actions, function(action){
+            action.date = moment(action.date).format('l');
+          })
+        })
+      })
+    }
 
     vm.init = function () {
       vm.subject = $stateParams.subject;

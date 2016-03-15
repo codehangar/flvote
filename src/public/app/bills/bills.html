@@ -11,8 +11,7 @@
                     <li>Vote #YES or #NO to create your tweet</li>
                     <li>Share it on Twitter</li>
                 </ol>
-                <p>Promote your views or add your favorite hashtag by customizing your tweet before sharing. If someone
-                    ReTweets yours, then that’s another vote for your side.</p>
+                <p>Promote your views or add your favorite hashtag by customizing your tweet before sharing. If someone ReTweets yours, then that’s another vote for your side.</p>
                 <p>We don’t store any of your info. The conversation happens out on the Twitterverse.</p>
             </div>
             <div class="col-xs-12 col-md-4">
@@ -21,10 +20,7 @@
                         <h1>Are you Registered to Vote in FL?</h1>
                         <p>The first step to making a real difference in your community is registering to vote!</p>
                         <br/>
-                        <p class="text-center"><a
-                                href="http://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/"
-                                target="_blank" class="btn btn-primary btn-block btn-lg"
-                                onClick="ga('send', {
+                        <p class="text-center"><a href="http://dos.myflorida.com/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/" target="_blank" class="btn btn-primary btn-block btn-lg" onClick="ga('send', {
                                 'hitType': 'event',
                                 'eventCategory': 'External URL',
                                 'eventAction': 'Register to Vote',
@@ -32,70 +28,59 @@
                                 'eventValue': 1
                                 });">Register Now</a></p>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
-
-    
-
     <!-- Bills List -->
     <h1>Recent Bills</h1>
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
                 <form class="form-inline">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="query" ng-model="query" placeholder="Search">
-                      <button type="submit" class="btn btn-default" ng-click="BillsCtrl.fetchBills(query)">Submit</button>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="query" ng-model="query" placeholder="Search">
+                            <button type="submit" class="btn btn-default" ng-click="BillsCtrl.fetchBills(query)">Submit</button>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
-                    <p class="pull-right">
-                        <strong ng-show="BillsCtrl.subject">Filtering By Subject:</strong>
-                        <a href="/"class="badge" ng-click="BillsCtrl.subject = ''" ng-bind="BillsCtrl.subject"></a>
-                    </p>
-                  </div>
+                    <div class="col-md-6">
+                        <p class="pull-right">
+                            <strong ng-show="BillsCtrl.subject">Filtering By Subject:</strong>
+                            <a href="/" class="badge" ng-click="BillsCtrl.subject = ''" ng-bind="BillsCtrl.subject"></a>
+                        </p>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
     <div class="bill" ng-repeat="bill in BillsCtrl.bills">
-
-        <div class="bill-left">
-          <div>
-            <a ui-sref="bills.detail({id: bill.billId})" class="billhover billname">
-                <strong ng-bind="bill.attributes.identifier"></strong>
-                <span ng-bind="bill.attributes.title"></span>
-            </a>
-            <p>{{bill.attributes.legislative_session.name}}</p>
-          </div>
-            <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in bill.attributes.subject" class="badge" style="margin:5px">{{subject}}</a>
+        <div class="col-sm-9">
+            <div>
+                <a ui-sref="bills.detail({id: bill.billId})" class="">
+                    <h3>
+                        <strong ng-bind="bill.attributes.identifier"></strong><strong>:</strong> <span ng-bind="bill.attributes.title"></span>
+                    </h3>
+                </a>
+                <span><strong>Current Status:</strong> {{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].description}} ({{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].date}})</span>
+                <p>{{bill.attributes.legislative_session.name}}</p>
+            </div>
+            <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in bill.attributes.subject" class="badge" style="margin-right:5px">{{subject}}</a>
         </div>
-
-        <div class="bill-right">
-            <a class="btn btn-danger vote" target="_blank" ng-href="{{bill.voteNoLink}}"
-                ng-click="BillsCtrl.voteNo(bill)">
-                <span class="glyphicon glyphicon-menu-down"></span>Vote #NO
-                <strong>{{bill.twitterVotes.no}}</strong>
-            </a>
-
-            <a class="btn btn-success vote" target="_blank" ng-href="{{bill.voteYesLink}}"
-                ng-click="BillsCtrl.voteYes(bill)">
+        <div class="col-sm-3">
+            <a class="btn btn-primary vote btn-block" target="_blank" ng-href="{{bill.voteYesLink}}" ng-click="BillsCtrl.voteYes(bill)">
                 <span class="glyphicon glyphicon-menu-up"></span>Vote #YES
                 <strong>{{bill.twitterVotes.yes}}</strong>
             </a>
-
+            <a class="btn btn-danger vote btn-block" target="_blank" ng-href="{{bill.voteNoLink}}" ng-click="BillsCtrl.voteNo(bill)">
+                <span class="glyphicon glyphicon-menu-down"></span>Vote #NO
+                <strong>{{bill.twitterVotes.no}}</strong>
+            </a>
             <div class="clearfix"></div>
         </div>
-
         <div class="clearfix"></div>
     </div>
-
     <button type="button" class="btn btn-block btn-lg btn-primary loadmore" ng-click="BillsCtrl.getNextPage()" ng-show="BillsCtrl.bills.length < BillsCtrl.allBills.length || BillsCtrl.links.next">LOAD MORE</button>
 </div>
-
