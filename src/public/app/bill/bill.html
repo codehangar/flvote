@@ -70,8 +70,8 @@
                 <div class="panel-body" style="overflow-wrap: break-word;">
                     <div ng-repeat="sponsor in BillCtrl.bill.attributes.sponsorships">
                         <div>
-                            <img ng-src="{{sponsor.person.image}}" height="200" />
-                            <p><span class="label label-primary" ng-if="sponsor.primary">Primary Sponsor</span> {{sponsor.person.name}}</p> 
+                            <img ng-if="sponsor.person.image" ng-src="{{sponsor.person.image}}" height="200" />
+                            <p><span class="label label-primary" ng-if="sponsor.primary">Primary Sponsor</span> {{sponsor.person.name ? sponsor.person.name : sponsor.name}}</p> 
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Subjects</strong></div>
                 <div class="panel-body">
-                    <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in BillCtrl.bill.attributes.subject" class="badge" style="margin:5px">{{subject}}</a>
+                    <a ui-sref="bills.bySubject({subject: subject})" 
+                    ng-repeat="subject in BillCtrl.bill.attributes.subject"
+                    ng-if="BillCtrl.bill.attributes.subject.length > 0"
+                    class="badge" style="margin:5px">{{subject}}</a>
+                    <span ng-if="BillCtrl.bill.attributes.subject.length === 0">(no related subjects)</span>
                 </div>
             </div>
             <!-- SOURCES -->
