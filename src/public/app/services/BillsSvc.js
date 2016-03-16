@@ -8,7 +8,7 @@
           "Content-Type": 'application/vnd.api+json'
         },
         method: "GET",
-        url: "https://www.tabsontallahassee.com/api/bills/",
+        url: "https://www.tabsontallahassee.com/api/bills/?sort=-updated_at",
         params: {
           apikey: '932407d3-d4bd-4beb-8cd2-f4356036b6fc',
           legislative_session: 2016,
