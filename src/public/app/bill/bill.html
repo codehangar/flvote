@@ -2,20 +2,31 @@
     <div class="row">
         <!-- BILL TITLE -->
         <div class="col-md-12">
-            <h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
+            
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-9">
+            <h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
             <h3>
                 Legislative Session:
                 <span ng-bind="BillCtrl.bill.attributes.legislative_session.name"></span>
             </h3>
         </div>
         <!-- VOTE BTNS -->
-        <div class="col-md-6">
-            <a class="btn btn-danger vote" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}"><span
+        <div class="col-sm-3">
+            <br>
+            <a class="btn btn-primary btn-block" style="text-align:left;" target="_blank" ng-href="{{BillCtrl.bill.voteYesLink}}" ng-click="BillsCtrl.voteYes(bill)">
+                <span class="glyphicon glyphicon-menu-up"></span>Vote <strong>#YES</strong>
+                <strong class="badge pull-right">{{BillCtrl.bill.twitterVotes.yes}}</strong>
+            </a>
+            <a class="btn btn-danger vote btn-block" style="text-align:left;" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}" ng-click="BillsCtrl.voteNo(bill)">
+                <span class="glyphicon glyphicon-menu-down"></span>Vote <strong>#NO</strong>
+                <strong class="badge pull-right">{{BillCtrl.bill.twitterVotes.no}}</strong>
+            </a>
+
+           <!--  <a class="btn btn-danger vote" target="_blank" ng-href="{{BillCtrl.bill.voteNoLink}}"><span
                     class="glyphicon glyphicon-menu-down"></span>Vote #no <strong>{{BillCtrl.bill.twitterVotes.no}}</strong></a>
             <a class="btn btn-success vote" target="_blank" ng-href="{{BillCtrl.bill.voteYesLink}}"><span
-                    class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{BillCtrl.bill.twitterVotes.yes}}</strong></a>
+                    class="glyphicon glyphicon-menu-up"></span>Vote #yes <strong>{{BillCtrl.bill.twitterVotes.yes}}</strong></a> -->
         </div>
         <div class="col-md-12">
             <hr/>
@@ -57,10 +68,10 @@
             <!-- COMMENTS -->
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Converstion</strong></div>
-                <pre>
+                <!-- <pre>
                     http://local.flvote.org:8080/ocd-bill_f58c4471-67c0-47ac-af36-8b64f6655e3a#disqus_thread
                     {{BillCtrl.disqusConfig}}
-                </pre>
+                </pre> -->
                 <div class="panel-body">
                     <dir-disqus config="BillCtrl.disqusConfig"></dir-disqus>
                 </div>
