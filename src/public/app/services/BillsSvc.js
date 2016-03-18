@@ -8,20 +8,18 @@
           "Content-Type": 'application/vnd.api+json'
         },
         method: "GET",
-        url: "https://www.tabsontallahassee.com/api/bills/?sort=-updated_at",
+        url: "https://www.tabsontallahassee.com/api/bills/",
         params: {
           apikey: '932407d3-d4bd-4beb-8cd2-f4356036b6fc',
           legislative_session: 2016,
         }
       };
 
-      this.fetchBillsThisSession = function (query) {
-        var params = {
-          params: {
-            q: query
-          }
+      this.fetchBillsThisSession = function (params) {
+        var config = {
+          params: params
         };
-        var requestConfig = angular.merge({}, params, BASE_CONFIG);
+        var requestConfig = angular.merge({}, config, BASE_CONFIG);
         console.log("requestConfig", requestConfig)
         return $http(requestConfig);
       };

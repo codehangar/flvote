@@ -37,7 +37,6 @@
         </div>
     </div>
 </div>
-
 <div class="container">
     <!-- HOW IT WORKS -->
     <div class="row" style="margin:40px 0;">
@@ -65,20 +64,47 @@
         <h1>Recent Bills</h1>
         <div class="panel panel-default">
             <div class="panel-body">
-                <form class="form-inline">
-                    <div class="col-md-6">
+                <div class="col-sm-10">
+                    <form class="form-inline">
                         <div class="form-group">
                             <input type="text" class="form-control" id="query" ng-model="query" placeholder="Search">
                             <button type="submit" class="btn btn-default" ng-click="BillsCtrl.fetchBills(query)">Submit</button>
                         </div>
+                    </form>
+                </div>
+                <div class="col-sm-2">
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="BillsCtrl.setSort('legislative_session')">Legislative session - ascending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('-legislative_session')">Legislative session - descending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('created_at')">Created at - ascending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('-created_at')">Created at - descending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('updated_at')">Updated at - ascending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('-updated_at')">Updated at - descending</a></li>
+                            <!-- <li><a ng-click="BillsCtrl.setSort('extras')">Extras - ascending</a></li> -->
+                            <!-- <li><a ng-click="BillsCtrl.setSort('-extras')">Extras - descending</a></li> -->
+                            <li><a ng-click="BillsCtrl.setSort('identifier')">Bill Number - ascending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('-identifier')">Bill Number - descending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('title')">Title - ascending</a></li>
+                            <li><a ng-click="BillsCtrl.setSort('-title')">Title - descending</a></li>
+                            <!-- <li><a ng-click="BillsCtrl.setSort('classification')">Classification - ascending</a></li> -->
+                            <!-- <li><a ng-click="BillsCtrl.setSort('-classification')">Classification - descending</a></li> -->
+                            <!-- <li><a ng-click="BillsCtrl.setSort('subject')">Subject - ascending</a></li> -->
+                            <!-- <li><a ng-click="BillsCtrl.setSort('-subject')">Subject - descending</a></li> -->
+                            <!-- <li><a ng-click="BillsCtrl.setSort('from_organization')">From organization - ascending</a></li> -->
+                            <!-- <li><a ng-click="BillsCtrl.setSort('-from_organization')">From organization - descending</a></li> -->
+                        </ul>
                     </div>
-                    <div class="col-md-6">
-                        <p class="pull-right">
-                            <strong ng-show="BillsCtrl.subject">Filtering By Subject:</strong>
-                            <a href="/" class="badge" ng-click="BillsCtrl.subject = ''" ng-bind="BillsCtrl.subject"></a>
-                        </p>
-                    </div>
-                </form>
+                </div>
+                <div class="col-sm-12">
+                    <p>
+                        <strong ng-show="BillsCtrl.subject">Filtering By Subject:</strong>
+                        <a href="/" class="badge" ng-click="BillsCtrl.subject = ''" ng-bind="BillsCtrl.subject"></a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

@@ -9,10 +9,12 @@
 
     var vm = this;
 
-    vm.fetchBills = function (query) {
+    vm.fetchBills = function (query, sort) {
+      console.log('query, sort',query, sort)
       var params = {
         q: query,
-        subject: vm.subject
+        subject: vm.subject,
+        sort: sort
       };
       BillsSvc.fetchBillsCustomParams(params).then(function(d) {
         vm.allBills = d.data.data;
@@ -92,7 +94,7 @@
     function getExtraBillInfo(bills){
       angular.forEach(vm.bills, function(bill){
         bill.disqusId = $window.location.href + bill.billId;
-        console.log('DISQUSWIDGETS',DISQUSWIDGETS);
+        // console.log('DISQUSWIDGETS',DISQUSWIDGETS);
         BillsSvc.fetchBillByID(bill.billId).then(function(d) {
           bill.extra = d.data.data;
           angular.forEach(bill.extra.attributes.actions, function(action){
@@ -102,6 +104,11 @@
       })
 
       DISQUSWIDGETS.getCount({reset: true});
+    }
+
+    vm.setSort = function(sort){
+      console.log('set sort', sort);
+      vm.fetchBills(undefined, sort)
     }
 
     vm.init = function () {
