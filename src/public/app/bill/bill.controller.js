@@ -14,28 +14,11 @@
 
       BillsSvc.fetchBillByID(billId).then(function(d) {
         vm.bill = d.data.data;
+        console.log('vm.bill',vm.bill)
         TwitterSvc.addTwitterLinksToBill(vm.bill);
+        vm.disqusConfig.disqus_title = vm.bill.attributes.title;
       })
-
-      
-
     };
-
-    vm.initDisqus = function(){
-      var disqus_config = function () {
-          this.page.url = vm.canonicalUrl;  // Replace PAGE_URL with your page's canonical URL variable
-          this.page.identifier = $stateParams.id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-      };
-      
-      (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
-          var d = document, s = d.createElement('script');
-          
-          s.src = '//FLVOTE.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
-          
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-      })();
-    }
 
     vm.init = function () {
       vm.fetchBill();
@@ -43,11 +26,11 @@
       vm.hashtagYes = "yes";
       vm.billLink = encodeURIComponent("http://www.google.com");
       vm.canonicalUrl = $window.location.href;
-      
+
       vm.disqusConfig = {
           disqus_shortname: 'FLVOTE',
-          disqus_identifier: $stateParams.id,
-          disqus_url: $window.location.href
+          disqus_identifier: $window.location.href +'/'+ $stateParams.id,
+          disqus_url: $window.location.href +'/'+ $stateParams.id
       };
 
     };
