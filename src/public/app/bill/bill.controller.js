@@ -16,7 +16,7 @@
         vm.bill = d.data.data;
         console.log('vm.bill',vm.bill)
         TwitterSvc.addTwitterLinksToBill(vm.bill);
-        vm.disqusConfig.disqus_title = vm.bill.attributes.title;
+        vm.disqusConfig.disqus_title = vm.bill.attributes.identifier +': '+vm.bill.attributes.title;
       })
     };
 
@@ -28,9 +28,9 @@
       vm.canonicalUrl = $window.location.href;
 
       vm.disqusConfig = {
-          disqus_shortname: 'FLVOTE',
-          disqus_identifier: $window.location.href +'/'+ $stateParams.id,
-          disqus_url: $window.location.href +'/'+ $stateParams.id
+          disqus_shortname: 'flvote',
+          disqus_identifier: $window.location.href,
+          disqus_url: $window.location.href
       };
 
     };

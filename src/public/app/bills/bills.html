@@ -83,26 +83,28 @@
         </div>
     </div>
     <div class="bill" ng-repeat="bill in BillsCtrl.bills">
-        <div class="col-sm-9">
+        <div class="col-sm-9" ng-if="bill">
             <div>
                 <a ui-sref="bills.detail({id: bill.billId})" class="">
-                    <h3>
+                    <h3 style="    margin-top: 0;">
                         <strong ng-bind="bill.attributes.identifier"></strong><strong>:</strong> <span ng-bind="bill.attributes.title"></span>
                     </h3>
                 </a>
                 <span><strong>Current Status:</strong> {{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].description}} ({{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].date}})</span>
                 <p>{{bill.attributes.legislative_session.name}}</p>
+                <!-- <p><span class="disqus-comment-count" data-disqus-url="{{bill.disqusId}}">First article</span></p> -->
+                <!-- <p><a href="{{bill.disqusId}}#disqus_thread" class="comments">Something</a></p> -->
             </div>
             <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in bill.attributes.subject" class="badge" style="margin-right:5px">{{subject}}</a>
         </div>
         <div class="col-sm-3">
-            <a class="btn btn-primary vote btn-block" target="_blank" ng-href="{{bill.voteYesLink}}" ng-click="BillsCtrl.voteYes(bill)">
-                <span class="glyphicon glyphicon-menu-up"></span>Vote #YES
-                <strong>{{bill.twitterVotes.yes}}</strong>
+            <a class="btn btn-primary btn-block" style="text-align:left;" target="_blank" ng-href="{{bill.voteYesLink}}" ng-click="BillsCtrl.voteYes(bill)">
+                <span class="glyphicon glyphicon-menu-up"></span>Vote <strong>#YES</strong>
+                <strong class="badge pull-right">{{bill.twitterVotes.yes}}</strong>
             </a>
-            <a class="btn btn-danger vote btn-block" target="_blank" ng-href="{{bill.voteNoLink}}" ng-click="BillsCtrl.voteNo(bill)">
-                <span class="glyphicon glyphicon-menu-down"></span>Vote #NO
-                <strong>{{bill.twitterVotes.no}}</strong>
+            <a class="btn btn-danger vote btn-block" style="text-align:left;" target="_blank" ng-href="{{bill.voteNoLink}}" ng-click="BillsCtrl.voteNo(bill)">
+                <span class="glyphicon glyphicon-menu-down"></span>Vote <strong>#NO</strong>
+                <strong class="badge pull-right">{{bill.twitterVotes.no}}</strong>
             </a>
             <div class="clearfix"></div>
         </div>

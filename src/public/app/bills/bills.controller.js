@@ -5,7 +5,7 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, TwitterSvc, $timeout, $location, $stateParams) {
+  function BillsCtrl(BillsSvc, TwitterSvc, $timeout, $location, $stateParams, $window) {
 
     var vm = this;
 
@@ -90,8 +90,9 @@
     };
 
     function getExtraBillInfo(bills){
-      console.log('getExtraBillInfo', vm.bills);
       angular.forEach(vm.bills, function(bill){
+        bill.disqusId = $window.location.href + bill.billId;
+        console.log('DISQUSWIDGETS',DISQUSWIDGETS);
         BillsSvc.fetchBillByID(bill.billId).then(function(d) {
           bill.extra = d.data.data;
           angular.forEach(bill.extra.attributes.actions, function(action){
@@ -99,6 +100,8 @@
           })
         })
       })
+
+      DISQUSWIDGETS.getCount({reset: true});
     }
 
     vm.init = function () {
