@@ -4,7 +4,8 @@
   angular
     .module('flvote', [
       'ui.router',
-      'ngMessages'
+      'ngMessages',
+      'angularUtils.directives.dirDisqus'
     ]);
 
   angular

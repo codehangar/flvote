@@ -15,13 +15,11 @@
         }
       };
 
-      this.fetchBillsThisSession = function (query) {
-        var params = {
-          params: {
-            q: query
-          }
+      this.fetchBillsThisSession = function (params) {
+        var config = {
+          params: params
         };
-        var requestConfig = angular.merge({}, params, BASE_CONFIG);
+        var requestConfig = angular.merge({}, config, BASE_CONFIG);
         console.log("requestConfig", requestConfig)
         return $http(requestConfig);
       };

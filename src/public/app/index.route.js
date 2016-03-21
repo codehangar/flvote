@@ -10,6 +10,38 @@
     // $urlRouterProvider.otherwise('/errors/404/');
 
     $stateProvider
+      .state('about', {
+        url: '/about',
+        views: {
+          'header': {
+            templateUrl: 'app/partials/header.html'
+          },
+          'footer': {
+            templateUrl: 'app/partials/footer.html'
+          },
+          'content': {
+            templateUrl: 'app/pages/about.html',
+            // controller: 'BillsCtrl',
+            // controllerAs: 'BillsCtrl'
+          }
+        }
+      })
+      .state('contact', {
+        url: '/contact',
+        views: {
+          'header': {
+            templateUrl: 'app/partials/header.html'
+          },
+          'footer': {
+            templateUrl: 'app/partials/footer.html'
+          },
+          'content': {
+            templateUrl: 'app/pages/contact.html',
+            // controller: 'BillsCtrl',
+            // controllerAs: 'BillsCtrl'
+          }
+        }
+      })
       .state('bills', {
         url: '/',
         views: {
