@@ -28,11 +28,7 @@ RethinkDbService.prototype.getConnection = function() {
 				connectionInfo = {
 							host: process.env.DATABASE_HOST,
 							port: process.env.DATABASE_PORT,
-							authKey: process.env.DATABASE_KEY,
-							db: process.env.DATABASE_NAME,
-							ssl: {
-								ca: caCert
-							}
+							db: process.env.DATABASE_NAME
 						};
 			}
 			r.connect(connectionInfo).then(function(conn) {

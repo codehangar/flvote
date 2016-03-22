@@ -29,11 +29,7 @@ function dbConnection() {
 			if(process.env.NODE_ENV === 'production') {
 				connectionInfo = {
 							host: process.env.DATABASE_HOST,
-							port: process.env.DATABASE_PORT,
-							authKey: process.env.DATABASE_KEY,
-							ssl: {
-								ca: caCert
-							}
+							port: process.env.DATABASE_PORT
 						};
 			}
 			r.connect(connectionInfo).then(function(conn) {
