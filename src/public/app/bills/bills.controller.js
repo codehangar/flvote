@@ -5,7 +5,7 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, TwitterSvc, VotesSvc, $timeout, $location, $stateParams, $window) {
+  function BillsCtrl(BillsSvc, TwitterSvc, TwitterVotesSvc, VotesSvc, $timeout, $location, $stateParams, $window) {
 
     var vm = this;
 
@@ -22,7 +22,9 @@
         vm.links = d.data.links;
         generateTwitterShareLink(vm.bills)
         getExtraBillInfo(vm.bills);
+        getTwitterVotesForBills(vm.bills);
         // getBillVoteInfo(vm.bills);
+        console.log(vm.bills)
       })
       
 
@@ -103,6 +105,21 @@
           })
         })
       })
+    }
+
+    function getTwitterVotesForBills(bills){
+      console.log(bills);
+      // angular.forEach(vm.bills, function(bill){
+        // bill.disqusId = $window.location.href + bill.billId;
+      //   // console.log('DISQUSWIDGETS',DISQUSWIDGETS);
+        TwitterVotesSvc.fetchVotesForBills(bills).then(function(d) {
+          console.log('d.data.data',d)
+      //     bill.extra = d.data.data;
+      //     angular.forEach(bill.extra.attributes.actions, function(action){
+      //       action.date = moment(action.date).format('l');
+      //     })
+        })
+      // })
     }
 
     // function getBillVoteInfo(){
