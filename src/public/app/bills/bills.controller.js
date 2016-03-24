@@ -108,18 +108,15 @@
     }
 
     function getTwitterVotesForBills(bills){
-      console.log(bills);
-      // angular.forEach(vm.bills, function(bill){
-        // bill.disqusId = $window.location.href + bill.billId;
-      //   // console.log('DISQUSWIDGETS',DISQUSWIDGETS);
-        TwitterVotesSvc.fetchVotesForBills(bills).then(function(d) {
-          console.log('d.data.data',d)
-      //     bill.extra = d.data.data;
-      //     angular.forEach(bill.extra.attributes.actions, function(action){
-      //       action.date = moment(action.date).format('l');
-      //     })
+      TwitterVotesSvc.fetchVotesForBills(bills).then(function(d) {
+        var twitterVotes = d.data;
+        angular.forEach(bills, function(bill){
+          angular.forEach(twitterVotes, function(v){
+            if(bill.attributes.identifier === v.billIdentifier)
+              bill.twitterVotes = v;
+          })
         })
-      // })
+      })
     }
 
     // function getBillVoteInfo(){

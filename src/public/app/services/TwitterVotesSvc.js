@@ -32,13 +32,10 @@
       this.fetchVotesForBills = function(bills) {
         var billIds = [];
         angular.forEach(bills, function(bill){
-          billIds.push(bill.billId.replace('_','/'));
+          billIds.push(bill.attributes.identifier);
         });
         billIds = billIds.join(',')
-        console.log('Twitter vote svc', billIds);
-        BASE_CONFIG.params.billIdentifier = billIds
-        // var requestConfig = angular.merge({}, BASE_CONFIG, {billIdentifier: billIds});
-        console.log("requestConfig", BASE_CONFIG)
+        BASE_CONFIG.params.billIdentifiers = billIds
         return $http(BASE_CONFIG);
       };
 
