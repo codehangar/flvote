@@ -119,6 +119,20 @@
       })
     }
 
+    function fetchAllTwitterVotes(){
+      TwitterVotesSvc.fetchAllVotes().then(function(d) {
+        vm.twitterVotes = d.data;
+        console.log('vm.twitterVotes',vm.twitterVotes)
+        vm.totalVotes = 0;
+        angular.forEach(vm.twitterVotes, function(vote){
+          console.log('vote',vote)
+          vm.totalVotes = vm.totalVotes+vote.no;
+          vm.totalVotes = vm.totalVotes+vote.yes;
+        })
+        console.log('vm.totalVotes',vm.totalVotes)
+      });
+    }
+
     // function getBillVoteInfo(){
     //   angular.forEach(vm.bills, function(bill){
     //     VotesSvc.fetchVoteByBillID(bill.billId).then(function(d) {
@@ -140,8 +154,8 @@
 
     vm.init = function () {
       vm.subject = $stateParams.subject;
-
       vm.fetchBills();
+      fetchAllTwitterVotes();
 
       // vm.searchQuery = $location.search().
     };

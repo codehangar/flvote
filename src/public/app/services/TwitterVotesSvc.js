@@ -12,6 +12,10 @@
         params: {}
       };
 
+      this.fetchAllVotes = function() {
+        return $http(BASE_CONFIG);
+      };
+
       this.fetchVotesForBill = function(bill) {
         console.log('bill',bill);
         BASE_CONFIG.params.url = BASE_CONFIG.params.url + '/' + bill.attributes.identifier

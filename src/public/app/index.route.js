@@ -14,7 +14,9 @@
         url: '/about',
         views: {
           'header': {
-            templateUrl: 'app/partials/header.html'
+            templateUrl: 'app/partials/header.html',
+            controller: 'BillsCtrl',
+            controllerAs: 'BillsCtrl'
           },
           'footer': {
             templateUrl: 'app/partials/footer.html'
@@ -30,7 +32,9 @@
         url: '/contact',
         views: {
           'header': {
-            templateUrl: 'app/partials/header.html'
+            templateUrl: 'app/partials/header.html',
+            controller: 'BillsCtrl',
+            controllerAs: 'BillsCtrl'
           },
           'footer': {
             templateUrl: 'app/partials/footer.html'
@@ -46,7 +50,9 @@
         url: '/',
         views: {
           'header': {
-            templateUrl: 'app/partials/header.html'
+            templateUrl: 'app/partials/header.html',
+            controller: 'BillsCtrl',
+            controllerAs: 'BillsCtrl'
           },
           'footer': {
             templateUrl: 'app/partials/footer.html'
