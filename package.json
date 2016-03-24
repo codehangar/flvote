@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "build": "echo \"Error: no build specified\"",
-    "start": "NODE_ENV=local node server.js",
+    "start": "node server.js",
     "setupdb": "node src/tools/databaseSetup.js",
     "syncbills": "node src/tools/syncBills.js"
   },

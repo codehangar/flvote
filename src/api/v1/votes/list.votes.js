@@ -26,6 +26,22 @@ var listVotes = function(req, res) {
 			res.json(errors);
 		}
 
+		// Lets slug in any missing votes for any query parameters passed
+		if(billIdentifiers) {
+			for(var i = 0; i < results.length; i++) {
+				billIdentifiers.splice(billIdentifiers.indexOf(results[i].billIdentifier), 1);
+			}
+			for(var i = 0; i < billIdentifiers.length; i++) {
+				results.push({
+					billIdentifier: billIdentifiers[i],
+					created_date: new Date(),
+					id: null,
+					no: 0,
+					yes: 0
+				});
+			}
+		}	
+
 		res.status(200);
 		res.json(results);
 
