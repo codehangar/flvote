@@ -5,12 +5,11 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, TwitterSvc, $timeout, $location, $stateParams, $window) {
+  function BillsCtrl(BillsSvc, TwitterSvc, VotesSvc, $timeout, $location, $stateParams, $window) {
 
     var vm = this;
 
     vm.fetchBills = function (query, sort) {
-      console.log('query, sort',query, sort)
       var params = {
         q: query,
         subject: vm.subject,
@@ -23,6 +22,7 @@
         vm.links = d.data.links;
         generateTwitterShareLink(vm.bills)
         getExtraBillInfo(vm.bills);
+        // getBillVoteInfo(vm.bills);
       })
       
 
@@ -78,6 +78,7 @@
             generateTwitterShareLink(vm.bills.slice(idx, idx + 10));
             sendGAEvent();
             getExtraBillInfo();
+            getBillVoteInfo();
           })
       }
 
@@ -102,9 +103,21 @@
           })
         })
       })
-
-      DISQUSWIDGETS.getCount({reset: true});
     }
+
+    // function getBillVoteInfo(){
+    //   angular.forEach(vm.bills, function(bill){
+    //     VotesSvc.fetchVoteByBillID(bill.billId).then(function(d) {
+    //       bill.vote = d.data.data;
+    //       console.log('vote', bill.vote[0])
+    //       // VotesSvc.fetchVoteByID(bill.vote[0].id).then(function(d) {
+    //       //   bill.votes = d.data.data;
+    //       //   console.log('votes', bill.votes)
+    //       // })
+    //     })
+        
+    //   })
+    // }
 
     vm.setSort = function(sort){
       console.log('set sort', sort);
