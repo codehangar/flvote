@@ -28,10 +28,17 @@
       //   var requestConfig = angular.merge({}, {params: params}, BASE_CONFIG);
       //   return $http(requestConfig)
       // };
+      this.fetchVotesForBill = function(bill) {
+        console.log('bill',bill);
+        BASE_CONFIG.params.url = BASE_CONFIG.params.url + '/' + bill.attributes.identifier
+        return $http(BASE_CONFIG);
+      };
 
       this.fetchVotesForBills = function(bills) {
         var billIds = [];
+        console.log('bill',bills);
         angular.forEach(bills, function(bill){
+
           billIds.push(bill.attributes.identifier);
         });
         billIds = billIds.join(',')
