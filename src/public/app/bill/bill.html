@@ -2,7 +2,7 @@
     <div class="row">
         <!-- BILL TITLE -->
         <div class="col-md-12">
-            
+
         </div>
         <div class="col-sm-9">
             <h2>{{BillCtrl.bill.attributes.identifier}}: {{BillCtrl.bill.attributes.title}}</h2>
@@ -35,7 +35,7 @@
     <div class="row">
         <!-- FULL -->
         <div class="col-md-12">
-            
+
         </div>
         <!-- LEFT -->
         <div class="col-md-8">
@@ -72,6 +72,7 @@
                     http://local.flvote.org:8080/ocd-bill_f58c4471-67c0-47ac-af36-8b64f6655e3a#disqus_thread
                     {{BillCtrl.disqusConfig}}
                 </pre> -->
+                <pre>{{ BillCtrl.disqusConfig | json}}</pre>
                 <div class="panel-body">
                     <dir-disqus config="BillCtrl.disqusConfig"></dir-disqus>
                 </div>
@@ -86,7 +87,7 @@
                     <div ng-repeat="sponsor in BillCtrl.bill.attributes.sponsorships">
                         <div>
                             <img ng-if="sponsor.person.image" ng-src="{{sponsor.person.image}}" height="200" />
-                            <p><span class="label label-primary" ng-if="sponsor.primary">Primary Sponsor</span> {{sponsor.person.name ? sponsor.person.name : sponsor.name}}</p> 
+                            <p><span class="label label-primary" ng-if="sponsor.primary">Primary Sponsor</span> {{sponsor.person.name ? sponsor.person.name : sponsor.name}}</p>
                         </div>
                     </div>
                 </div>
@@ -95,7 +96,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Subjects</strong></div>
                 <div class="panel-body">
-                    <a ui-sref="bills.bySubject({subject: subject})" 
+                    <a ui-sref="bills.bySubject({subject: subject})"
                     ng-repeat="subject in BillCtrl.bill.attributes.subject"
                     ng-if="BillCtrl.bill.attributes.subject.length > 0"
                     class="badge" style="margin:5px">{{subject}}</a>
