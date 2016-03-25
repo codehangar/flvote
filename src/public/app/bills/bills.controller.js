@@ -24,8 +24,13 @@
         getExtraBillInfo(vm.bills);
         getTwitterVotesForBills(vm.bills);
         // getBillVoteInfo(vm.bills);
+
+        $timeout(function(){
+          console.log("reset comment counts")
+          DISQUSWIDGETS.getCount({reset: true});
+        },600);
       })
-      
+
 
       // GA tracking
       ga('send', {
@@ -139,7 +144,7 @@
     //       //   console.log('votes', bill.votes)
     //       // })
     //     })
-        
+
     //   })
     // }
 
