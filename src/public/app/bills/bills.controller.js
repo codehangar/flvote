@@ -24,9 +24,13 @@
         getExtraBillInfo(vm.bills);
         getTwitterVotesForBills(vm.bills);
         // getBillVoteInfo(vm.bills);
-        console.log(vm.bills)
+
+        $timeout(function(){
+          console.log("reset comment counts")
+          DISQUSWIDGETS.getCount({reset: true});
+        },600);
       })
-      
+
 
       // GA tracking
       ga('send', {
@@ -122,14 +126,11 @@
     function fetchAllTwitterVotes(){
       TwitterVotesSvc.fetchAllVotes().then(function(d) {
         vm.twitterVotes = d.data;
-        console.log('vm.twitterVotes',vm.twitterVotes)
         vm.totalVotes = 0;
         angular.forEach(vm.twitterVotes, function(vote){
-          console.log('vote',vote)
           vm.totalVotes = vm.totalVotes+vote.no;
           vm.totalVotes = vm.totalVotes+vote.yes;
         })
-        console.log('vm.totalVotes',vm.totalVotes)
       });
     }
 
@@ -143,7 +144,7 @@
     //       //   console.log('votes', bill.votes)
     //       // })
     //     })
-        
+
     //   })
     // }
 
@@ -156,7 +157,6 @@
       vm.subject = $stateParams.subject;
       vm.fetchBills();
       fetchAllTwitterVotes();
-
       // vm.searchQuery = $location.search().
     };
 
