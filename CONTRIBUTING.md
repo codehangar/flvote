@@ -3,10 +3,14 @@
 * Clone this repo and check out the `dev` Branch
 * In Terminal.app, run: `npm install`
 
-### How to Run
+### Database
+
+Use this tutorial to configure a tool called Kitematic
+IMPORTANT!!! - Instead of using mongodb/redis like the tutorial explains use rethinkdb in Kitematic instead, everthing else will be similar.
+http://codehangar.io/local-dbs-with-ease-ft-kitematic-from-docker-toolbox/
 
 ```shell
-$ npm start
+$ npm run setupdb
 ```
 
 ### Local Environment
@@ -23,4 +27,12 @@ TWITTER_ACCESS_TOKEN_SECRET={{your_secret}}
 DATABASE_HOST={{host}}
 DATABASE_PORT={{post}}
 DATABASE_NAME=flvote
+```
+
+### How to Run
+
+The database and local enviornment steps should ideally be configured before running the application
+
+```shell
+$ npm start
 ```

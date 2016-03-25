@@ -5,12 +5,11 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, TwitterSvc, $timeout, $location, $stateParams, $window) {
+  function BillsCtrl(BillsSvc, TwitterSvc, TwitterVotesSvc, VotesSvc, $timeout, $location, $stateParams, $window) {
 
     var vm = this;
 
     vm.fetchBills = function (query, sort) {
-      console.log('query, sort',query, sort)
       var params = {
         q: query,
         subject: vm.subject,
@@ -23,6 +22,9 @@
         vm.links = d.data.links;
         generateTwitterShareLink(vm.bills)
         getExtraBillInfo(vm.bills);
+        getTwitterVotesForBills(vm.bills);
+        // getBillVoteInfo(vm.bills);
+        console.log(vm.bills)
       })
       
 
@@ -78,6 +80,7 @@
             generateTwitterShareLink(vm.bills.slice(idx, idx + 10));
             sendGAEvent();
             getExtraBillInfo();
+            getBillVoteInfo();
           })
       }
 
@@ -102,9 +105,47 @@
           })
         })
       })
-
-      DISQUSWIDGETS.getCount({reset: true});
     }
+
+    function getTwitterVotesForBills(bills){
+      TwitterVotesSvc.fetchVotesForBills(bills).then(function(d) {
+        var twitterVotes = d.data;
+        angular.forEach(bills, function(bill){
+          angular.forEach(twitterVotes, function(v){
+            if(bill.attributes.identifier === v.billIdentifier)
+              bill.twitterVotes = v;
+          })
+        })
+      })
+    }
+
+    function fetchAllTwitterVotes(){
+      TwitterVotesSvc.fetchAllVotes().then(function(d) {
+        vm.twitterVotes = d.data;
+        console.log('vm.twitterVotes',vm.twitterVotes)
+        vm.totalVotes = 0;
+        angular.forEach(vm.twitterVotes, function(vote){
+          console.log('vote',vote)
+          vm.totalVotes = vm.totalVotes+vote.no;
+          vm.totalVotes = vm.totalVotes+vote.yes;
+        })
+        console.log('vm.totalVotes',vm.totalVotes)
+      });
+    }
+
+    // function getBillVoteInfo(){
+    //   angular.forEach(vm.bills, function(bill){
+    //     VotesSvc.fetchVoteByBillID(bill.billId).then(function(d) {
+    //       bill.vote = d.data.data;
+    //       console.log('vote', bill.vote[0])
+    //       // VotesSvc.fetchVoteByID(bill.vote[0].id).then(function(d) {
+    //       //   bill.votes = d.data.data;
+    //       //   console.log('votes', bill.votes)
+    //       // })
+    //     })
+        
+    //   })
+    // }
 
     vm.setSort = function(sort){
       console.log('set sort', sort);
@@ -113,8 +154,8 @@
 
     vm.init = function () {
       vm.subject = $stateParams.subject;
-
       vm.fetchBills();
+      fetchAllTwitterVotes();
 
       // vm.searchQuery = $location.search().
     };

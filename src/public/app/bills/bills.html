@@ -116,7 +116,8 @@
                         <strong ng-bind="bill.attributes.identifier"></strong><strong>:</strong> <span ng-bind="bill.attributes.title"></span>
                     </h3>
                 </a>
-                <span><strong>Current Status:</strong> {{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].description}} ({{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].date}})</span>
+                <p><strong>Current Status:</strong> {{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].description}} ({{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].date}})</p>
+                <!-- <p><strong>Last Vote:</strong> {{bill[0].vote.attributes.result}} ({{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].date}})</p> -->
                 <p>{{bill.attributes.legislative_session.name}}</p>
                 <!-- <p><span class="disqus-comment-count" data-disqus-url="{{bill.disqusId}}">First article</span></p> -->
                 <!-- <p><a href="{{bill.disqusId}}#disqus_thread" class="comments">Something</a></p> -->

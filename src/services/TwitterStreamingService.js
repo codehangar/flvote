@@ -132,6 +132,15 @@ TwitterStreamingService.prototype.parseTweet = function(tweet) {
         if(fields[i].indexOf('HB') !== -1) {
           details.billIdentifier = fields[i].replace('HB',  'HB ');
         }
+        if(fields[i].indexOf('SPB') !== -1) {
+          details.billIdentifier = fields[i].replace('SPB',  'SPB ');
+        }
+        if(fields[i].indexOf('HJR') !== -1) {
+          details.billIdentifier = fields[i].replace('HJR',  'HJR ');
+        }
+        if(fields[i].indexOf('SR') !== -1) {
+          details.billIdentifier = fields[i].replace('SR',  'SR ');
+        }
         if(fields[i] === 'yes' || fields[i] === 'no') {
           details[fields[i]] = 1;
         }

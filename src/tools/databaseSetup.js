@@ -11,32 +11,18 @@ try {
 var r = require('rethinkdb'),
 		co = require('co'),
 		fs = require('fs'),
-		connectionInfo;
+		connectionInfo = {
+			host: process.env.DATABASE_HOST,
+			port: process.env.DATABASE_PORT
+		};
 
 /* Make database connection */
 function dbConnection() {
 	return new Promise(function(resolve, reject) {
-		fs.readFile('./cacert', function(err, caCert) {
-			// TODO - We need to move from compose.io to our own DO Box
-			// This is required for now to switch between using ssl or not for local vs prod until then
-			if(process.env.NODE_ENV === 'local') {
-				connectionInfo = {
-							host: process.env.DATABASE_HOST,
-							port: process.env.DATABASE_PORT
-						};
-			}
-
-			if(process.env.NODE_ENV === 'production') {
-				connectionInfo = {
-							host: process.env.DATABASE_HOST,
-							port: process.env.DATABASE_PORT
-						};
-			}
-			r.connect(connectionInfo).then(function(conn) {
-				resolve(conn);
-			}).catch(function(err) {
-				reject(err);
-			});
+		r.connect(connectionInfo).then(function(conn) {
+			resolve(conn);
+		}).catch(function(err) {
+			reject(err);
 		});
 	});
 }
