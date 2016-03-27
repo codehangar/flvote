@@ -12,7 +12,12 @@
     "build": "echo \"Error: no build specified\"",
     "start": "node server.js",
     "setupdb": "node src/tools/databaseSetup.js",
-    "syncbills": "node src/tools/syncBills.js"
+    "setupdb": "node database/scripts/setupDb.js",
+    "resetauthkey": "node database/scripts/resetAuthKey.js",
+    "generateauthkey": "node database/scripts/generateAuthKey.js",
+    "sshremoteserver": "node database/scripts/sshremoteserver.js",
+    "cloneremotedb": "node database/scripts/cloneRemoteDb.js",
+    "syncbills": "node database/scripts/syncBills.js"
   },
   "repository": {
     "type": "git",
@@ -32,8 +37,13 @@
     "co": "^4.6.0",
     "dotenv": "^1.2.0",
     "express": "^4.13.3",
+    "node-uuid": "^1.4.7",
     "rethinkdb": "^2.2.1",
     "twit": "^2.2.2",
     "twitter": "^1.2.5"
+  },
+  "devDependencies": {
+    "chalk": "^1.1.1",
+    "prompt": "^1.0.0"
   }
 }

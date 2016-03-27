@@ -16,7 +16,7 @@ VotesRepository.prototype.upsertVote = function(vote) {
 		co(function *() {
 			// Open a db connection
 			try {
-				var conn = yield RethinkDbService.getConnection();
+				var conn = yield RethinkDbService.getDatabaseConnection();
 			} catch(e) {
 				reject(e);
 			}
@@ -66,7 +66,7 @@ VotesRepository.prototype.listVotes = function(billIdentifiers) {
 		co(function *() {
 			// Open a db connection
 			try {
-				var conn = yield RethinkDbService.getConnection();
+				var conn = yield RethinkDbService.getDatabaseConnection();
 			} catch(e) {
 				reject(e);
 			}
