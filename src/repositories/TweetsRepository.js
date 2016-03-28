@@ -16,7 +16,7 @@ TweetsRepository.prototype.insertTweets = function(tweets) {
 		co(function *() {
 			// Open a db connection
 			try {
-				var conn = yield RethinkDbService.getConnection();
+				var conn = yield RethinkDbService.getDatabaseConnection();
 			} catch(e) {
 				reject(e);
 			}
