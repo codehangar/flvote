@@ -120,7 +120,7 @@
                 <!-- <p><strong>Last Vote:</strong> {{bill[0].vote.attributes.result}} ({{bill.extra.attributes.actions[bill.extra.attributes.actions.length-1].date}})</p> -->
                 <p>{{bill.attributes.legislative_session.name}}</p>
                 <!-- <p><span class="disqus-comment-count" data-disqus-url="{{bill.disqusId}}">First article</span></p> -->
-                
+
             </div>
             <a ui-sref="bills.bySubject({subject: subject})" ng-repeat="subject in bill.attributes.subject" class="badge" style="margin-right:5px">{{subject}}</a>
         </div>
@@ -134,7 +134,7 @@
                 <strong class="badge pull-right">{{bill.twitterVotes.no}}</strong>
             </a>
             <div class="clearfix"></div>
-            <p><a ui-sref="bills.detail({id: bill.billId})" class="disqus-comment-count" data-disqus-identifier="{{bill.disqusId}}">0 Comments</a></p>
+            <p><a ui-sref="bills.detail({id: bill.billId})" class="disqus-comment-count" data-disqus-identifier="{{bill.disqusConfig.disqus_identifier}}">0 Comments</a></p>
             <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>

@@ -9,7 +9,13 @@
 
     // $urlRouterProvider.otherwise('/errors/404/');
 
+    $urlRouterProvider.when('', '/bills');
+    $urlRouterProvider.when('/', '/bills');
+
     $stateProvider
+      .state('root', {
+        url: '/',
+      })
       .state('about', {
         url: '/about',
         views: {
@@ -47,12 +53,12 @@
         }
       })
       .state('bills', {
-        url: '/',
+        url: '/bills',
         views: {
           'header': {
             templateUrl: 'app/partials/header.html',
-            controller: 'BillsCtrl',
-            controllerAs: 'BillsCtrl'
+            // controller: 'BillsCtrl',
+            // controllerAs: 'BillsCtrl'
           },
           'footer': {
             templateUrl: 'app/partials/footer.html'
@@ -65,7 +71,7 @@
         }
       })
       .state('bills.bySubject', {
-        url: 'subject/:subject',
+        url: '/subject/:subject',
         views: {
           'content@': {
             templateUrl: 'app/bills/bills.html',
@@ -75,7 +81,7 @@
         }
       })
       .state('bills.detail', {
-        url: ':id',
+        url: '/:id',
         views: {
           'content@': {
             templateUrl: 'app/bill/bill.html',
