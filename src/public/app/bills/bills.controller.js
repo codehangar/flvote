@@ -5,7 +5,7 @@
     .module('flvote')
     .controller('BillsCtrl', BillsCtrl);
 
-  function BillsCtrl(BillsSvc, TwitterSvc, TwitterVotesSvc, VotesSvc, $timeout, $location, $stateParams, $window, DisqusSvc) {
+  function BillsCtrl(BillsSvc, TwitterSvc, TwitterVotesSvc, VotesSvc, $timeout, $location, $stateParams, $window, DisqusSvc, $rootScope) {
 
     var vm = this;
 
@@ -131,6 +131,7 @@
         angular.forEach(vm.twitterVotes, function(vote) {
           vm.totalVotes = vm.totalVotes + vote.no;
           vm.totalVotes = vm.totalVotes + vote.yes;
+          $rootScope.totalVotes = vm.totalVotes;
         })
       });
     }
